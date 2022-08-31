@@ -13,12 +13,20 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "import-helpers"],
   "rules": {
     "react/jsx-filename-extension": [
       "error",
       {
         "extensions": [".js", ".jsx"]
+      }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always", // new line between groups
+        "groups": ["/^react/", "module", ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
   }

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import * as CourseActions from '../../store/actions/course';
 
 function Sidebar() {
