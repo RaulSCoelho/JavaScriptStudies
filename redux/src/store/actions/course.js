@@ -1,7 +1,7 @@
-export function toggleLesson(module, lesson){
-    return {
-        type: 'TOGGLE_LESSON',
-        module,
-        lesson,
-    }
+export default function toggleLesson(module, lesson) {
+  return {
+    type: 'TOGGLE_LESSON',
+    module,
+    lesson,
+  };
 }

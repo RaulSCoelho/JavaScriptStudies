@@ -6,7 +6,6 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
-    "prettier",
     "plugin:react/jsx-runtime"
   ],
   "overrides": [],
