@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Video = () => {
   const { activeModule, activeLesson } = useSelector((state) => ({
@@ -8,7 +8,7 @@ const Video = () => {
   }));
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", fontSize: "40pt" }}>
+    <div style={{ display: 'flex', flexDirection: 'column', fontSize: '40pt' }}>
       <strong>Módulo {activeModule.title}</strong>
       <span>Aula {activeLesson.title}</span>
     </div>
