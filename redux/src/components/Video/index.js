@@ -1,7 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-const Video = ({ activeModule, activeLesson }) => {
+const Video = () => {
+  const { activeModule, activeLesson } = useSelector((state) => ({
+    activeModule: state.course.activeModule,
+    activeLesson: state.course.activeLesson,
+  }));
+
   return (
     <div style={{ display: "flex", flexDirection: "column", fontSize: "40pt" }}>
       <strong>Módulo {activeModule.title}</strong>
@@ -10,7 +15,4 @@ const Video = ({ activeModule, activeLesson }) => {
   );
 };
 
-export default connect((state) => ({
-  activeModule: state.course.activeModule,
-  activeLesson: state.course.activeLesson,
-}))(Video);
+export default Video;
