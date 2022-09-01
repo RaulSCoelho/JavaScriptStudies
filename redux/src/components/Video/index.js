@@ -8,14 +8,8 @@ function Video() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', fontSize: '40pt' }}>
-      <strong>
-        Módulo
-        {activeModule.title}
-      </strong>
-      <span>
-        Aula
-        {activeLesson.title}
-      </span>
+      <strong>{`Módulo ${activeModule.title}`}</strong>
+      <span>{`Aula ${activeLesson.title}`}</span>
     </div>
   );
 }

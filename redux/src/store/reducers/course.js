@@ -23,7 +23,7 @@ const INITIAL_STATE = {
   modules,
 };
 
-export default function course(state = INITIAL_STATE, action = {}) {
+export default function course(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'TOGGLE_LESSON':
       return {
