@@ -23,7 +23,9 @@ function Sidebar() {
                       margin: '10px',
                       cursor: 'pointer',
                     }}
-                    onClick={() => dispatch(CourseActions.toggleLesson(module, lesson))}
+                    onClick={() =>
+                      dispatch(CourseActions.toggleLesson(module, lesson))
+                    }
                   >
                     select
                   </button>
