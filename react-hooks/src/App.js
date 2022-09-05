@@ -1,5 +1,11 @@
-function App() {
-  return <div className="App"></div>;
-}
+import Location from './routes/Location';
+import Repositories from './routes/Repositories';
 
-export default App;
+export default function App() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <Repositories />
+      <Location />
+    </div>
+  );
+}
