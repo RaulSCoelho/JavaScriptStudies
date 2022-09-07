@@ -1,5 +1,8 @@
 const fetchData = ({
-  includeCredentials, method = 'GET', payload, url
+  includeCredentials = true,
+  method = 'GET',
+  payload,
+  url,
 }) => {
   const options = {
     method,
@@ -27,7 +30,7 @@ const fetchData = ({
     .then((data) => data);
 };
 
-const GET = async (url, includeCredentials = true) => {
+const GET = async (url, includeCredentials) => {
   const method = 'GET';
   const response = await fetchData({
     includeCredentials,
