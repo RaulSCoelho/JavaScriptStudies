@@ -1,8 +1,8 @@
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'
 
-import Sidebar from './components/Sidebar';
-import Video from './components/Video';
-import store from './store';
+import Sidebar from './components/Sidebar'
+import Video from './components/Video'
+import store from './store'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Sidebar />
       </div>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

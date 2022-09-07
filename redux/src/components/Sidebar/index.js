@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
 
-import * as CourseActions from '../../store/actions/course';
+import * as CourseActions from '../../store/actions/course'
 
 function Sidebar() {
-  const modules = useSelector((state) => state.course.modules);
-  const dispatch = useDispatch();
+  const modules = useSelector((state) => state.course.modules)
+  const dispatch = useDispatch()
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', fontSize: '40pt' }}>
@@ -36,7 +36,7 @@ function Sidebar() {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
-export default Sidebar;
+export default Sidebar

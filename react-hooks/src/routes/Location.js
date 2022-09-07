@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 export default function Location() {
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState({})
 
   useEffect(() => {
-    const watchId = navigator.geolocation.watchPosition(handlePositionReceived);
+    const watchId = navigator.geolocation.watchPosition(handlePositionReceived)
 
-    return () => navigator.geolocation.clearWatch(watchId);
-  }, []);
+    return () => navigator.geolocation.clearWatch(watchId)
+  }, [])
 
   function handlePositionReceived({ coords }) {
-    const { latitude, longitude } = coords;
-    setLocation({ latitude, longitude });
+    const { latitude, longitude } = coords
+    setLocation({ latitude, longitude })
   }
 
   return (
@@ -22,5 +22,5 @@ export default function Location() {
       Longitude:
       {location.longitude}
     </div>
-  );
+  )
 }

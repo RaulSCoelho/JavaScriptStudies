@@ -1,10 +1,10 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
 type ItemProps = {
-  title: string;
-  onAddToWishlist: (item: string) => void;
-  countItemsWithOne: number;
-};
+  title: string
+  onAddToWishlist: (item: string) => void
+  countItemsWithOne: number
+}
 
 function ItemComponent(props: ItemProps) {
   return (
@@ -14,7 +14,7 @@ function ItemComponent(props: ItemProps) {
         Add to wishlist
       </button>
     </li>
-  );
+  )
 }
 
-export const Item = memo(ItemComponent);
+export const Item = memo(ItemComponent)

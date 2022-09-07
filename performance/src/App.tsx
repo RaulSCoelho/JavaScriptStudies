@@ -1,28 +1,29 @@
-import { useCallback, useMemo, useState } from 'react';
-import { Item } from './components/Item';
+import { useCallback, useMemo, useState } from 'react'
+
+import { Item } from './components/Item'
 
 function App() {
-  const [items, setItems] = useState<string[]>([]);
-  const [wishlist, setWishlist] = useState<string[]>([]);
-  const [newItem, setNewItem] = useState('');
+  const [items, setItems] = useState<string[]>([])
+  const [wishlist, setWishlist] = useState<string[]>([])
+  const [newItem, setNewItem] = useState('')
 
   function addItemToList() {
     if (!items.includes(newItem)) {
       setItems([
         ...items,
         newItem === '' ? `item ${items.length + 1}` : newItem,
-      ]);
-      setNewItem('');
+      ])
+      setNewItem('')
     }
   }
 
   const AddToWishlist = useCallback((item: string) => {
-    setWishlist((state) => [...state, item]);
-  }, []);
+    setWishlist((state) => [...state, item])
+  }, [])
 
   const countItemsWithOne = useMemo(() => {
-    return items.filter((item) => item.includes('1')).length;
-  }, [items]);
+    return items.filter((item) => item.includes('1')).length
+  }, [items])
 
   return (
     <>
@@ -44,11 +45,11 @@ function App() {
               onAddToWishlist={AddToWishlist}
               countItemsWithOne={countItemsWithOne}
             />
-          );
+          )
         })}
       </ul>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

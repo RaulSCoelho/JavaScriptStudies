@@ -1,5 +1,5 @@
-import Location from './routes/Location';
-import Repositories from './routes/Repositories';
+import Location from './routes/Location'
+import Repositories from './routes/Repositories'
 
 export default function App() {
   return (
@@ -7,5 +7,5 @@ export default function App() {
       <Repositories />
       <Location />
     </div>
-  );
+  )
 }
