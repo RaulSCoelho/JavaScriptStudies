@@ -2,6 +2,15 @@
   "extends": "@rocketseat/eslint-config/react",
   "plugins": ["import-helpers"],
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "arrowParens": "avoid",
+        "semi": false,
+        "endOfLine": "auto"
+      }
+    ],
     "react/jsx-no-useless-fragment": "warn",
     "func-names": "warn",
     "no-param-reassign": "warn",
