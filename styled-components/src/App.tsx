@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { Title, TitleSmall } from './styles'
 
 function App() {
