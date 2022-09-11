@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import { createContext } from 'use-context-selector'
 import { v4 as uuid } from 'uuid'
@@ -39,7 +39,7 @@ export function ChatProvider({ children }) {
       author,
       text,
     }
-    setMessages((state) => [...state, message])
+    setMessages(state => [...state, message])
   }, [])
 
   const onUserConnected = useCallback((name: string) => {
@@ -49,7 +49,7 @@ export function ChatProvider({ children }) {
       id,
       name,
     }
-    setConnected((state) => [...state, user])
+    setConnected(state => [...state, user])
   }, [])
 
   return (

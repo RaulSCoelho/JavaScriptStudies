@@ -22,7 +22,7 @@ export const Chat = () => {
       <strong>Chat Messages</strong>
       <br />
       <ul>
-        {messages.map((message) => {
+        {messages.map(message => {
           return (
             <li key={message.id}>
               <strong>{message.author}</strong>

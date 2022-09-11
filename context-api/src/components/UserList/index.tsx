@@ -16,7 +16,7 @@ export const UserList = () => {
       <strong>User List</strong>
       <br />
       <ul>
-        {connected.map((user) => {
+        {connected.map(user => {
           return (
             <li key={user.id}>
               <strong>{user.name}</strong>
@@ -28,7 +28,7 @@ export const UserList = () => {
       <div>
         <input
           type="text"
-          onInput={(e) => setUser((e.target as HTMLButtonElement).value)}
+          onInput={e => setUser((e.target as HTMLButtonElement).value)}
           value={user}
           style={{ background: '#333', color: '#f0f0f0' }}
         />

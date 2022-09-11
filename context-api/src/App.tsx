@@ -1,3 +1,6 @@
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+
 import { ChatProvider } from './context/ChatContext'
 import Home from './pages/Home'
 import GlobalStyle from './styles/global'
@@ -5,7 +8,9 @@ import GlobalStyle from './styles/global'
 function App() {
   return (
     <ChatProvider>
-      <Home />
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
       <GlobalStyle />
     </ChatProvider>
   )

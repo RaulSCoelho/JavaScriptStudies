@@ -6,11 +6,11 @@ import { Router } from 'Router'
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <AppContext>
+    <AppContext>
+      <BrowserRouter>
         <Router />
-      </AppContext>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AppContext>
   )
 }
 
