@@ -22,7 +22,7 @@ install the packages by running: **pip install -r requirements.txt**
 upgrade pip: **python3.exe -m pip install --upgrade pip**
 
 # Seventh step
-create a backend folder and inside it, run the following command: **django-admin startproject {your project} .**
+create a backend folder and inside it, and run the following command: **django-admin startproject {your project} .**
 
 # Eighth step
 still inside the backend folder, create your first app: **python manage.py startapp {your app}**
