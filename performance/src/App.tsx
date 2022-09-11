@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 
 import { Item } from './components/Item'
 
@@ -18,11 +18,11 @@ function App() {
   }
 
   const AddToWishlist = useCallback((item: string) => {
-    setWishlist((state) => [...state, item])
+    setWishlist(state => [...state, item])
   }, [])
 
   const countItemsWithOne = useMemo(() => {
-    return items.filter((item) => item.includes('1')).length
+    return items.filter(item => item.includes('1')).length
   }, [items])
 
   return (
@@ -32,12 +32,12 @@ function App() {
       <input
         id="newItem"
         type="text"
-        onInput={(e) => setNewItem((e.target as HTMLButtonElement).value)}
+        onInput={e => setNewItem((e.target as HTMLButtonElement).value)}
         value={newItem}
       />
       <button onClick={addItemToList}>Add Item</button>
       <ul>
-        {items.map((item) => {
+        {items.map(item => {
           return (
             <Item
               key={item}
