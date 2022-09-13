@@ -76,6 +76,36 @@ insert_final_newline = true
 
 ```
 
+# My prettier.config.js
+```
+module.exports = {
+  singleQuote: true,
+  arrowParens: 'avoid',
+  semi: false,
+}
+```
+
+# My tsconfig.json
+```
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es2017",
+    "module": "commonjs",
+    "allowJs": true,
+    "noEmit": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./src"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
+```
+
 # My VSCode User Settings JSON
 ```
 {
