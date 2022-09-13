@@ -1,8 +1,8 @@
 # First step
-create a virtual env: **python3 -m venv venv**
+create a virtual env: **virtualenv venv**
 
 # Second step
-activate your venv: **. .\venv\bin\activate**
+activate your venv: **venv\Scripts\activate**
 
 # Third step
 "**Save Workspace As**"
@@ -19,7 +19,7 @@ create a '**requirements.txt**' file with the following packages:
 install the packages by running: **pip install -r requirements.txt**
 
 # Sixth step
-upgrade pip: **python3.exe -m pip install --upgrade pip**
+update your requirements.txt file: **pip freeze > requirements.txt**
 
 # Seventh step
 create a backend folder and inside it, run the following command: **django-admin startproject {your project} .**
