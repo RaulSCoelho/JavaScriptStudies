@@ -1,5 +1,5 @@
 # First step
-create a virtual env: **virtualenv venv**
+create a folder for your project and a virtual environment inside it: **virtualenv venv**
 
 # Second step
 activate your venv: **venv\Scripts\activate**
