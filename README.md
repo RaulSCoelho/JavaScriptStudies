@@ -16,7 +16,7 @@
 ![liveshare](https://user-images.githubusercontent.com/84609153/189963707-796f999f-4e76-48c5-8690-8014c1781e0e.png)
 ![liveserver](https://user-images.githubusercontent.com/84609153/189963742-c035ecce-b17d-461c-8c26-dc306ae725d3.png)
 
-#My .editorconfig
+# My .editorconfig
 ```
 root = true
 
