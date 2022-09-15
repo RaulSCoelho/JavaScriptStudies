@@ -1,4 +1,4 @@
-from rest_framework import generics, mixins
+from rest_framework import authentication, generics, mixins, permissions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
@@ -6,10 +6,12 @@ from django.shortcuts import get_object_or_404
 from .models import Product
 from .serializers import ProductSerializer
 
-
+# region FIRST WAY YOU CAN BUILD YOUR VIEW
 class ProductListCreateAPIView(generics.ListCreateAPIView):
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
+  authentication_classes = [authentication.SessionAuthentication]
+  permission_classes = [permissions.DjangoModelPermissions]
 
   def perform_create(self, serializer):
     # serializer.save(user=self.request.user)
@@ -44,8 +46,9 @@ class ProductDeleteAPIView(generics.DestroyAPIView):
 
   def perform_destroy(self, instance):
     super().perform_destroy(instance)
+# endregion
 
-
+# region SECOND WAY YOU CAN BUILD YOUR VIEW
 class ProductMixinView(
   mixins.CreateModelMixin,
   mixins.ListModelMixin,
@@ -75,8 +78,9 @@ class ProductMixinView(
     if content is None:
       content = 'This is a single view doing cool stuff'
     serializer.save(content=content)
+# endregion
 
-
+# region THIRD WAY YOU CAN BUILD YOUR VIEW
 @api_view(['GET', 'POST'])
 def product_alt_view(request, pk=None, *args, **kwargs):
 
@@ -100,3 +104,4 @@ def product_alt_view(request, pk=None, *args, **kwargs):
         content = title
       serializer.save(content=content)
       return Response(serializer.data)
+# endregion
