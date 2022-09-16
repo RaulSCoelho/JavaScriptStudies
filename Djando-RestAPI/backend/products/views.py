@@ -1,9 +1,7 @@
-from rest_framework import authentication ,generics, mixins, permissions
+from rest_framework import generics, mixins, permissions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-
-from api.authentication import TokenAuthentication
 
 from .models import Product
 from .permissions import IsStaffEditorPermission
@@ -13,7 +11,6 @@ from .serializers import ProductSerializer
 class ProductListCreateAPIView(generics.ListCreateAPIView):
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
-  authentication_classes = [authentication.SessionAuthentication, TokenAuthentication]
   permission_classes = [permissions.IsAdminUser ,IsStaffEditorPermission]
 
   def perform_create(self, serializer):
@@ -28,12 +25,13 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
 class ProductDetailAPIView(generics.RetrieveAPIView):
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
-  # lookup_field = 'pk' ??
+  permission_classes = [permissions.IsAdminUser ,IsStaffEditorPermission]
 
 
 class ProductUpdateAPIView(generics.UpdateAPIView):
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
+  permission_classes = [permissions.IsAdminUser ,IsStaffEditorPermission]
   lookup_field = 'pk'
 
   def perform_update(self, serializer):
@@ -45,6 +43,7 @@ class ProductUpdateAPIView(generics.UpdateAPIView):
 class ProductDeleteAPIView(generics.DestroyAPIView):
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
+  permission_classes = [permissions.IsAdminUser ,IsStaffEditorPermission]
   lookup_field = 'pk'
 
   def perform_destroy(self, instance):
