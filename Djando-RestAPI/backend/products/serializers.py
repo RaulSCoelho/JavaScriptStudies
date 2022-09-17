@@ -1,35 +1,36 @@
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
+from api.serializers import UserPublicSerializer
 from .validators import validate_title_no_hello, unique_product_title
 from .models import Product
 
-def get_url(self, obj, url_name):
-  request = self.context.get('request')
-  if request is None:
-    return None
-
-  return reverse(url_name, kwargs={'pk': obj.pk}, request=request)
+class ProductInlineSrializer(serializers.Serializer):
+  detail_url = serializers.HyperlinkedIdentityField(view_name='product-detail', read_only=True)
+  title = serializers.CharField(read_only=True)
 
 class ProductSerializer(serializers.ModelSerializer):
+  owner = UserPublicSerializer(source='user', read_only=True)
+  # email = serializers.EmailField(source='user.email', read_only=True)
+  related_products = ProductInlineSrializer(source='user.product_set.all', read_only=True, many=True)
   my_discount = serializers.SerializerMethodField(read_only=True)
   detail_url = serializers.HyperlinkedIdentityField(view_name='product-detail')
   edit_url = serializers.SerializerMethodField(read_only=True)
   title = serializers.CharField(validators=[validate_title_no_hello, unique_product_title])
-  # name = serializers.CharField(source='title', read_only=True)
   class Meta:
     model = Product
     fields = [
-      # 'user',
+      'owner',
+      # 'email',
       'detail_url',
       'edit_url',
       'id',
       'title',
-      # 'name',
       'content',
       'price',
       'sale_price',
-      'my_discount'
+      'my_discount',
+      'related_products'
     ]
 
   # def validate_title(self, value):
@@ -50,7 +51,7 @@ class ProductSerializer(serializers.ModelSerializer):
   #   email = validated_data.pop('email')
   #   return super().update(instance, validated_data)
 
-  def get_edit_url(self,obj):
+  def get_edit_url(self, obj):
     return get_url(self, obj, 'product-update')
 
   def get_my_discount(self, obj):
@@ -59,3 +60,10 @@ class ProductSerializer(serializers.ModelSerializer):
     if not isinstance(obj, Product):
       return None
     return obj.get_discount()
+
+def get_url(self, obj, url_name):
+  request = self.context.get('request')
+  if request is None:
+    return None
+
+  return reverse(url_name, kwargs={'pk': obj.pk}, request=request)
