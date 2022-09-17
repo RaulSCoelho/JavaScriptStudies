@@ -4,48 +4,74 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
 from .models import Product
-from api.mixins import StaffEditorPermissionMixin
+from api.mixins import StaffEditorPermissionMixin, UserQuerySetMixin
 from .serializers import ProductSerializer
 
 # region FIRST WAY YOU CAN BUILD YOUR VIEW
-class ProductListCreateAPIView(StaffEditorPermissionMixin, generics.ListCreateAPIView):
+
+# region CREATE OR LIST PRODUCTS
+class ProductListCreateAPIView(
+  UserQuerySetMixin,
+  StaffEditorPermissionMixin,
+  generics.ListCreateAPIView):
+
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
 
   def perform_create(self, serializer):
     # serializer.save(user=self.request.user)
-    email = serializer.validated_data.pop('email')
-    print(email)
     title = serializer.validated_data.get('title')
     content = serializer.validated_data.get('content') or None
     if content is None:
       content = title
-    serializer.save(content=content)
+    serializer.save(user=self.request.user, content=content)
 
+  # def get_queryset(self, *args, **kwargs):
+  #   qs = super().get_queryset(*args, **kwargs)
+  #   request = self.request
+  #   return qs.filter(user=request.user)
+# endregion
 
-class ProductDetailAPIView(StaffEditorPermissionMixin, generics.RetrieveAPIView):
+# region PRINT THE PRODUCT DETAILS
+class ProductDetailAPIView(
+  UserQuerySetMixin,
+  StaffEditorPermissionMixin,
+  generics.RetrieveAPIView):
+
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
+# endregion
 
+# region UPDATE A PRODUCT
+class ProductUpdateAPIView(
+  UserQuerySetMixin,
+  StaffEditorPermissionMixin,
+  generics.UpdateAPIView):
 
-class ProductUpdateAPIView(StaffEditorPermissionMixin, generics.UpdateAPIView):
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
-  lookup_field = 'pk'
+  lookup_field = 'pk' # default
 
   def perform_update(self, serializer):
     instance = serializer.save()
     if not instance.content:
       instance.content = instance.title
+# endregion
 
+# region DELETE A PRODUCT
+class ProductDeleteAPIView(
+  UserQuerySetMixin,
+  StaffEditorPermissionMixin,
+  generics.DestroyAPIView):
 
-class ProductDeleteAPIView(StaffEditorPermissionMixin, generics.DestroyAPIView):
   queryset = Product.objects.all()
   serializer_class = ProductSerializer
-  lookup_field = 'pk'
+  lookup_field = 'pk' # default
 
   def perform_destroy(self, instance):
     super().perform_destroy(instance)
+# endregion
+
 # endregion
 
 # region SECOND WAY YOU CAN BUILD YOUR VIEW
