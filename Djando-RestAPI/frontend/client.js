@@ -48,27 +48,31 @@ async function handleLogin(e) {
 }
 
 async function handleSearch(e) {
-  const endpoint = `${baseEndpoint}/products/search/?q=${e.target.value}`;
+  if (e.target.value !== '') {
+    const endpoint = `${baseEndpoint}/products/search/?q=${e.target.value}`;
 
-  fetchData({
-    method: 'GET',
-    url: endpoint,
-  }).then((res) => {
-    let isValid = true;
-    isTokenValid().then((res) => (isValid = res));
-    if (isValid && content) {
-      if (res && res.hits.length > 0) {
-        let htmlStr = '';
-        content.innerHTML = '';
-        for (const hit of res.hits) {
-          htmlStr += `<li key={${hit.objectID}}>${hit.title}</li>`;
+    fetchData({
+      method: 'GET',
+      url: endpoint,
+    }).then((res) => {
+      let isValid = true;
+      isTokenValid().then((res) => (isValid = res));
+      if (isValid && content) {
+        if (res && res.hits.length > 0) {
+          let htmlStr = '';
+          content.innerHTML = '';
+          for (const hit of res.hits) {
+            htmlStr += `<li key={${hit.objectID}}>${hit.title}</li>`;
+          }
+          content.innerHTML += `${htmlStr}`;
+        } else {
+          content.innerHTML = '<p>No results found</p>';
         }
-        content.innerHTML += `${htmlStr}`;
-      } else {
-        content.innerHTML = '<p>No results found</p>';
       }
-    }
-  });
+    });
+  } else {
+    getProductList();
+  }
 }
 
 function handleAuthData(token) {
