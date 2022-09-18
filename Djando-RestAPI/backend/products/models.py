@@ -1,3 +1,4 @@
+import random
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
@@ -18,12 +19,15 @@ class ProductQuerySet(models.QuerySet):
       qs = (qs | qs2).distinct()
     return qs
 
+
 class ProductManager(models.Manager):
   def get_queryset(self, *args, **kwargs):
     return ProductQuerySet(self.model, using=self._db)
 
   def search(self, query, user=None):
     return self.get_queryset().search(query, user=user)
+
+TAGS_MODEL_VALUES = ['eletronics', 'cars', 'boats', 'movies', 'cameras']
 
 class Product(models.Model):
   user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
@@ -34,8 +38,14 @@ class Product(models.Model):
 
   objects = ProductManager()
 
+  def is_public(self):
+    return self.public
+
+  def get_tags_list(self):
+    return [random.choice(TAGS_MODEL_VALUES)]
+
   @property
-  def sale_price(self):
+  def sale_price(self) -> bool:
     return "%.2f" %(float(self.price) * 0.8)
 
   def get_discount(self):
