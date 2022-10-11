@@ -6,31 +6,28 @@ interface FetchProps {
   simple?: boolean
 }
 
-const fetchData = ({
-  method = 'GET',
-  url,
-  payload,
-  includeCredentials = true,
-  simple = false,
-}: FetchProps) => {
+const fetchData = (props: FetchProps) => {
+  if (!props.method) props.method = 'GET'
+  if (props.includeCredentials === undefined) props.includeCredentials = true
+
   const options: globalThis.RequestInit = {
-    method,
+    method: props.method,
     redirect: 'follow',
     referrerPolicy: 'origin',
   }
 
-  if (!simple) {
+  if (!props.simple) {
     options.headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     }
     options.mode = 'cors'
+    if (props.includeCredentials) options.credentials = 'include'
   }
 
-  if (payload) options.body = JSON.stringify(payload)
-  if (includeCredentials) options.credentials = 'include'
+  if (props.payload) options.body = JSON.stringify(props.payload)
 
-  return fetch(url, options)
+  return fetch(props.url, options)
     .then(res => {
       const { status } = res
       if (status === 200) return res.json()
@@ -57,7 +54,7 @@ interface FetchWithPayload {
 const GET = async (props: FetchNoPayload) => {
   const options: FetchProps = { url: props.url }
 
-  if (!props.includeCredentials) options.includeCredentials = false
+  if (props.includeCredentials === false) options.includeCredentials = false
   if (props.simple) options.simple = true
 
   return await fetchData(options)
@@ -70,7 +67,7 @@ const POST = async (props: FetchWithPayload) => {
     payload: props.payload,
   }
 
-  if (!props.includeCredentials) options.includeCredentials = false
+  if (props.includeCredentials === false) options.includeCredentials = false
   if (props.simple) options.simple = true
 
   return await fetchData(options)
@@ -83,7 +80,7 @@ const PATCH = async (props: FetchWithPayload) => {
     payload: props.payload,
   }
 
-  if (!props.includeCredentials) options.includeCredentials = false
+  if (props.includeCredentials === false) options.includeCredentials = false
   if (props.simple) options.simple = true
 
   return await fetchData(options)
@@ -92,7 +89,7 @@ const PATCH = async (props: FetchWithPayload) => {
 const DELETE = async (props: FetchNoPayload) => {
   const options: FetchProps = { method: 'DELETE', url: props.url }
 
-  if (!props.includeCredentials) options.includeCredentials = false
+  if (props.includeCredentials === false) options.includeCredentials = false
   if (props.simple) options.simple = true
 
   return await fetchData(options)
