@@ -1,0 +1,30 @@
+{
+  "extends": "@rocketseat/eslint-config/react",
+  "plugins": [],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "arrowParens": "avoid",
+        "semi": false,
+        "endOfLine": "auto"
+      }
+    ],
+    "func-names": "warn",
+    "no-param-reassign": "warn",
+    "no-unused-vars": "warn",
+    "prefer-const": "warn",
+    "no-restricted-syntax": "warn",
+    "object-shorthand": "warn",
+    "implicit-arrow-linebreak": "off",
+    "default-param-last": "off",
+    "no-use-before-define": "off",
+    "arrow-parens": "off",
+    "arrow-body-style": "off",
+    "import/prefer-default-export": "off",
+    "no-console": "off",
+    "comma-dangle": "off",
+    "no-useless-constructor": "off"
+  }
+}
