@@ -3,11 +3,11 @@ import React from 'react'
 import { faker } from '@faker-js/faker'
 import styled from 'styled-components'
 
-export const WritingMode: React.FC = () => {
+export const Resize: React.FC = () => {
   return (
     <Flex>
       <div className="container">
-        <h1>Vertical Text</h1>
+        <h1>Resize</h1>
         <p>{faker.lorem.lines(4)}</p>
       </div>
     </Flex>
@@ -23,7 +23,6 @@ const Flex = styled.div`
   align-items: center;
 
   .container {
-    display: flex;
     background-color: #d9f0ff;
     border-radius: 18px;
     box-shadow: 4px 6px 5px 2px rgba(0, 0, 0, 0.2);
@@ -31,9 +30,10 @@ const Flex = styled.div`
     padding: 20px;
     color: black;
 
-    //Write Mode
-    h1 {
-      writing-mode: vertical-lr;
-    }
+    // Resize part
+    overflow: auto;
+    resize: both;
+    /* resize: vertical; */
+    /* resize: horizontal; */
   }
 `
