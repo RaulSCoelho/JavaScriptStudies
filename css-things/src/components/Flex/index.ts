@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Flex = styled.div`
-  /* background: #353640; */
   display: flex;
   width: 100%;
   height: 100%;
