@@ -6,8 +6,5 @@ export const Box = styled.div`
   height: auto;
   width: auto;
   display: flex;
-
-  @media (max-width: 724px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 `

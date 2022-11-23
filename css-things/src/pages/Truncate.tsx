@@ -16,7 +16,7 @@ export const Truncate: React.FC = () => {
 
 const Flex = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   flex-direction: column;
   justify-content: center;
