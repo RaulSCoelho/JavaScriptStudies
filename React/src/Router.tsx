@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import ContextApi from 'ContextApi/pages/ContextApi'
 import { Gradient } from 'CSS-Things/pages/Gradient'
@@ -15,10 +15,14 @@ import { MemoCallback } from 'Memo&Callback/pages/MemoCallback'
 import { ReactHooks } from 'React-Hooks/pages/ReactHooks'
 import { Redux } from 'Redux/pages/Redux'
 import { StyledComponents } from 'StyledComponents/pages/StyledComponents'
+import { ThemeSwitcher } from 'ThemeSwitcher/pages/ThemeSwitcher'
 
 export function Router() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="theme-switcher" />} />
+      {/* ThemeSwitcher */}
+      <Route path="theme-switcher" element={<ThemeSwitcher />} />
       {/* StyledComponents */}
       <Route path="styled-components" element={<StyledComponents />} />
       {/* Redux */}

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import Switch from 'react-switch'
 
 import { shade } from 'polished'
 import { ThemeContext } from 'styled-components'
 
+import { Switch } from '../Switch'
 import { Container } from './styles'
 
 type Props = {
@@ -17,12 +17,10 @@ const Header = (props: Props) => {
     <Container>
       Hello World
       <Switch
-        onChange={props.toggleTheme}
-        checked={title === 'dark'}
-        checkedIcon={false}
-        uncheckedIcon={false}
-        height={10}
+        switchWhen={title === 'dark'}
+        onClick={props.toggleTheme}
         width={40}
+        height={10}
         handleDiameter={20}
         offColor={shade(0.15, colors.primary)}
         onColor={colors.secundary}
