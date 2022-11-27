@@ -4,7 +4,7 @@ import { Box } from '../components/Box'
 import { Chat } from '../components/Chat'
 import { UserList } from '../components/UserList'
 
-function Home() {
+function ContextApi() {
   return (
     <Box>
       <Chat />
@@ -13,4 +13,4 @@ function Home() {
   )
 }
 
-export default Home
+export default ContextApi

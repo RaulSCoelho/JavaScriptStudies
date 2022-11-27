@@ -7,14 +7,14 @@ import { NavbarStyle } from './styles'
 
 export const Navbar: React.FC = () => {
   const pages = [
-    { text: 'Gradient', path: 'gradient' },
-    { text: 'Truncate', path: 'truncate' },
-    { text: 'Resize', path: 'resize' },
-    { text: 'Scrolling', path: 'scrolling' },
-    { text: 'Image', path: 'image' },
-    { text: 'WritingMode', path: 'writingMode' },
-    { text: 'Positioning', path: 'positioning' },
-    { text: 'ObjectFit', path: '/' },
+    { text: 'Gradient', path: 'css-things/gradient' },
+    { text: 'Truncate', path: 'css-things/truncate' },
+    { text: 'Resize', path: 'css-things/resize' },
+    { text: 'Scrolling', path: 'css-things/scrolling' },
+    { text: 'Image', path: 'css-things/image' },
+    { text: 'WritingMode', path: 'css-things/writingMode' },
+    { text: 'Positioning', path: 'css-things/positioning' },
+    { text: 'ObjectFit', path: 'css-things' },
   ]
 
   return (

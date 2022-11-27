@@ -6,7 +6,7 @@ export const ObjectFit: React.FC = () => {
   return (
     <Flex>
       <div className="box">
-        <img src="thor.jpg" alt="thor" />
+        <img src="../thor.jpg" alt="thor" />
       </div>
     </Flex>
   )

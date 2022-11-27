@@ -7,13 +7,13 @@ export const ImageCSS: React.FC = () => {
     <Flex>
       <div className="page" id="page1">
         <div className="box">
-          <img src="taycan-frente.jpg" alt="taycan" />
+          <img src="../taycan-frente.jpg" alt="taycan" />
           <a href="#page2">Go to page2</a>
         </div>
       </div>
       <div className="page" id="page2">
         <div className="box">
-          <img src="taycan-frente.jpg" alt="taycan" />
+          <img src="../taycan-frente.jpg" alt="taycan" />
           <a href="#page1">Go to page1</a>
         </div>
       </div>
