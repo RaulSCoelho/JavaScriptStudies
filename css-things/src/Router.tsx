@@ -14,10 +14,13 @@ import { HooksTS } from 'Hooks-Typescript/pages/HooksTS'
 import { MemoCallback } from 'Memo&Callback/pages/MemoCallback'
 import { ReactHooks } from 'React-Hooks/pages/ReactHooks'
 import { Redux } from 'Redux/pages/Redux'
+import { StyledComponents } from 'StyledComponents/pages/StyledComponents'
 
 export function Router() {
   return (
     <Routes>
+      {/* StyledComponents */}
+      <Route path="styled-components" element={<StyledComponents />} />
       {/* Redux */}
       <Route path="redux" element={<Redux />} />
       {/* ReactHooks */}

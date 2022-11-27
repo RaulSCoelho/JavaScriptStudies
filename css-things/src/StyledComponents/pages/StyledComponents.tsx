@@ -2,18 +2,16 @@ import React from 'react'
 
 import { Title, TitleSmall } from './styles'
 
-function App() {
+export const StyledComponents: React.FC = () => {
   return (
-    <div>
+    <div style={{ height: '100vh' }}>
       <Title fontSize={30}>
         Hello, World!
         <br />
-        <span>Text Menor</span>
+        <span>Text bem menor</span>
       </Title>
 
       <TitleSmall>Menor</TitleSmall>
     </div>
   )
 }
-
-export default App

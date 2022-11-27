@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 
-export const Title = styled.h1`
+interface TitleProps {
+  fontSize?: number
+}
+
+export const Title = styled.h1<TitleProps>`
   color: #f00;
-  background: #000;
   font-size: ${props => `${props.fontSize}px`};
 
   span {
