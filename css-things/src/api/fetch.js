@@ -20,14 +20,14 @@ const fetchData = ({
   if (payload) options.body = JSON.stringify(payload)
 
   return fetch(url, options)
-    .then((res) => {
+    .then(res => {
       const { status } = res
       if (status === 200) return res.json()
       if (status === 401) return {}
       if (status === 403) return {}
       return {}
     })
-    .then((data) => data)
+    .then(data => data)
 }
 
 const GET = async (url, includeCredentials) => {

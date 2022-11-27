@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FcLike } from 'react-icons/fc'
 
-import { FETCH } from '../api/fetch'
+import { FETCH } from '../../api/fetch'
 
 export default function Repositories() {
   const [repositories, setRepositories] = useState([])
@@ -10,7 +10,7 @@ export default function Repositories() {
     async function fetchData() {
       const response = await FETCH.get(
         'https://api.github.com/users/RaulSCoelho/repos',
-        false,
+        false
       )
       setRepositories(response)
     }
@@ -18,13 +18,13 @@ export default function Repositories() {
   }, [])
 
   useEffect(() => {
-    const filtered = repositories.filter((repo) => repo.favorite)
+    const filtered = repositories.filter(repo => repo.favorite)
 
     document.title = `❤ ${filtered.length}`
   }, [repositories])
 
   function handleFavorite(id) {
-    const newRepositories = repositories.map((repo) => {
+    const newRepositories = repositories.map(repo => {
       return repo.id === id ? { ...repo, favorite: !repo.favorite } : repo
     })
 
@@ -33,7 +33,7 @@ export default function Repositories() {
 
   return (
     <ul>
-      {repositories.map((repo) => (
+      {repositories.map(repo => (
         <li key={repo.id}>
           {repo.name}
           {repo.favorite ? <FcLike style={{ marginLeft: '10px' }} /> : null}

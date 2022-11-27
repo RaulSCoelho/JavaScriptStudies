@@ -12,10 +12,13 @@ import { Truncate } from 'CSS-Things/pages/Truncate'
 import { WritingMode } from 'CSS-Things/pages/WritingMode'
 import { HooksTS } from 'Hooks-Typescript/pages/HooksTS'
 import { MemoCallback } from 'Memo&Callback/pages/MemoCallback'
+import { ReactHooks } from 'React-Hooks/pages/ReactHooks'
 
 export function Router() {
   return (
     <Routes>
+      {/* ReactHooks */}
+      <Route path="react-hooks" element={<ReactHooks />} />
       {/* Memo&Callback */}
       <Route path="memo-callback" element={<MemoCallback />} />
       {/* HooksTS */}
