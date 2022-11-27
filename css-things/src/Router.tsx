@@ -11,10 +11,13 @@ import { Scrolling } from 'CSS-Things/pages/Scrolling'
 import { Truncate } from 'CSS-Things/pages/Truncate'
 import { WritingMode } from 'CSS-Things/pages/WritingMode'
 import { HooksTS } from 'Hooks-Typescript/pages/HooksTS'
+import { MemoCallback } from 'Memo&Callback/pages/MemoCallback'
 
 export function Router() {
   return (
     <Routes>
+      {/* Memo&Callback */}
+      <Route path="memo-callback" element={<MemoCallback />} />
       {/* HooksTS */}
       <Route path="hooks-ts" element={<HooksTS />} />
       {/* ContextApi */}

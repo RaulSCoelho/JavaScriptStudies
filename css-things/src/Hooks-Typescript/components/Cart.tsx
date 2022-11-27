@@ -43,6 +43,7 @@ export const Cart: React.FC = () => {
   useEffect(() => {
     greeting('Raul')
     inputRef.current?.focus()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

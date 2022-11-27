@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
+import { Box } from 'components/Box'
 import AppContext from 'context'
-import { Box } from 'CSS-Things/components/Box'
 import { Navbar } from 'CSS-Things/components/Navbar'
 import { Router } from 'Router'
 
