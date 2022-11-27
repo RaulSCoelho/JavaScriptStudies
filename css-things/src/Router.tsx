@@ -10,10 +10,13 @@ import { Resize } from 'CSS-Things/pages/Resize'
 import { Scrolling } from 'CSS-Things/pages/Scrolling'
 import { Truncate } from 'CSS-Things/pages/Truncate'
 import { WritingMode } from 'CSS-Things/pages/WritingMode'
+import { HooksTS } from 'Hooks-Typescript/pages/HooksTS'
 
 export function Router() {
   return (
     <Routes>
+      {/* HooksTS */}
+      <Route path="hooks-ts" element={<HooksTS />} />
       {/* ContextApi */}
       <Route path="context-api" element={<ContextApi />} />
       {/* CSS THINGS */}

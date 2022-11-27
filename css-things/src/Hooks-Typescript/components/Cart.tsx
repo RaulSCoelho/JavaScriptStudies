@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react'
 
-import CartContext from 'context/CartContext'
+import CartContext from 'Hooks-Typescript/context/CartContext'
 
 interface Product {
   id: number

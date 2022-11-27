@@ -42,7 +42,7 @@ export const Todos: React.FC = () => {
   const [todo, setTodo] = useState('')
 
   const newTodo: Todo = {
-    id: uuid(),
+    id: Number(uuid()),
     todo,
   }
 
