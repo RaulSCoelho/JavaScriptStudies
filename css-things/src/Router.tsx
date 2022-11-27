@@ -13,10 +13,13 @@ import { WritingMode } from 'CSS-Things/pages/WritingMode'
 import { HooksTS } from 'Hooks-Typescript/pages/HooksTS'
 import { MemoCallback } from 'Memo&Callback/pages/MemoCallback'
 import { ReactHooks } from 'React-Hooks/pages/ReactHooks'
+import { Redux } from 'Redux/pages/Redux'
 
 export function Router() {
   return (
     <Routes>
+      {/* Redux */}
+      <Route path="redux" element={<Redux />} />
       {/* ReactHooks */}
       <Route path="react-hooks" element={<ReactHooks />} />
       {/* Memo&Callback */}

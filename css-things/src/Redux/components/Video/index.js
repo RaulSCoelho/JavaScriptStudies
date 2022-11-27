@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 
 function Video() {
-  const { activeModule, activeLesson } = useSelector((state) => ({
+  const { activeModule, activeLesson } = useSelector(state => ({
     activeModule: state.course.activeModule,
     activeLesson: state.course.activeLesson,
   }))
