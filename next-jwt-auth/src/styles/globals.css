@@ -16,3 +16,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+input {
+  outline: none;
+}
+
+#__next {
+  background: #f8fbfa;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
