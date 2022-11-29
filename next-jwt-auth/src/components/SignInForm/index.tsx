@@ -1,16 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useForm } from 'react-hook-form'
 
+import { AuthContext } from '../../context/AuthContext'
 import { SignInFormStyle } from './styles'
 
 export const SignInForm: React.FC = () => {
+  const { register, handleSubmit } = useForm()
+  const { signIn } = useContext(AuthContext)
+
+  async function handleSignIn(data) {
+    await signIn(data)
+  }
+
   return (
     <SignInFormStyle>
       <h1>Sign in to your account</h1>
-      <form>
-        <input type="text" name="username" />
-        <input type="text" name="password" />
+      <form onSubmit={handleSubmit(handleSignIn)}>
+        <input
+          {...register('username')}
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
+        />
+        <input
+          {...register('password')}
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
         <br />
-        <button>Sign In</button>
+        <button type="submit">Sign In</button>
       </form>
     </SignInFormStyle>
   )
