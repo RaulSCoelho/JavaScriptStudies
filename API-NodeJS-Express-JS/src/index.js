@@ -5,7 +5,7 @@ const cors = require('cors')
 require('dotenv').config()
 
 // Import Routes
-const userRoute = require('./routes/user')
+const projectsRoute = require('./routes/projects')
 const authRoute = require('./routes/auth')
 
 //Connect to DB
@@ -22,7 +22,7 @@ app.use(cors())
 app.use(express.json())
 
 // App Routes
-app.use('/users', userRoute)
+app.use('/projects', projectsRoute)
 app.use('/auth', authRoute)
 
 app.listen(3000, () => {

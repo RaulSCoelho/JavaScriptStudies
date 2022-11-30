@@ -13,8 +13,7 @@ router.post('/register', async (req, res) => {
 
   try {
     const existingUser = await User.findOne({ email })
-    if (existingUser)
-      return res.status(400).send({ error: 'User already exists!' })
+    if (existingUser) return res.status(400).send({ error: 'User already exists!' })
 
     const user = await User.create(req.body)
 
@@ -37,8 +36,7 @@ router.post('/login', async (req, res) => {
   if (!user) return res.status(404).send({ error: 'Invalid email or password' })
 
   const validPassword = await bcrypt.compare(password, user.password)
-  if (!validPassword)
-    return res.status(404).send({ error: 'Invalid email or password' })
+  if (!validPassword) return res.status(404).send({ error: 'Invalid email or password' })
 
   user.password = undefined
 
@@ -55,7 +53,7 @@ router.post('/forgot-password', async (req, res) => {
 
   try {
     const user = await User.findOne({ email })
-    if (!user) return res.send({ message })
+    if (!user) return res.send({ success: message })
 
     const token = crypto.randomBytes(20).toString('hex')
 
@@ -76,7 +74,7 @@ router.post('/forgot-password', async (req, res) => {
       context: { token },
     })
 
-    return res.send({ message })
+    return res.send({ success: message })
   } catch (err) {
     res.status(400).send({ error: errorMessage })
   }
@@ -92,8 +90,7 @@ router.post('/reset-password', async (req, res) => {
     )
     if (!user) return res.status(400).send({ error: errorMessage })
 
-    if (token !== user.passwordResetToken)
-      return res.status(400).send({ error: 'Invalid token' })
+    if (token !== user.passwordResetToken) return res.status(400).send({ error: 'Invalid token' })
 
     const now = new Date()
 
@@ -104,7 +101,7 @@ router.post('/reset-password', async (req, res) => {
 
     await user.save()
 
-    return res.send({ message: 'Your password has been reset successfully' })
+    return res.send({ success: 'Your password has been reset successfully' })
   } catch (err) {
     res.status(400).send({ error: errorMessage })
   }
