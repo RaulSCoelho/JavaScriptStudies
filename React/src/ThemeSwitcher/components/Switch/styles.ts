@@ -1,10 +1,11 @@
+import { Property } from 'csstype'
 import styled from 'styled-components'
 
 interface StyleProps {
   width: number
   height: number
   handleDiameter: number
-  backgroundColor: string
+  backgroundColor: Property.BackgroundColor
 }
 
 export const SwitchStyle = styled.div<StyleProps>`
