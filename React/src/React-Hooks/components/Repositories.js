@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FcLike } from 'react-icons/fc'
 
-import { FETCH } from '../../api/fetch'
+import { FETCH } from '../../services/fetch'
 
 export default function Repositories() {
   const [repositories, setRepositories] = useState([])

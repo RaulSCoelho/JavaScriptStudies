@@ -79,10 +79,12 @@ insert_final_newline = true
 # My prettier.config.js
 ```
 module.exports = {
+  semi: false,
   singleQuote: true,
   arrowParens: 'avoid',
-  semi: false,
-}
+  trailingComma: 'none',
+  endOfLine: 'auto'
+};
 ```
 
 # My tsconfig.json
@@ -116,7 +118,7 @@ module.exports = {
   "editor.fontSize": 14,
   "javascript.suggest.autoImports": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "editor.rulers": [120, 120],
+  "editor.rulers": [80, 120],
   "extensions.ignoreRecommendations": true,
   "typescript.tsserver.log": "off",
   "files.associations": {
@@ -209,12 +211,14 @@ module.exports = {
   "editor.tabSize": 2,
   "security.workspace.trust.untrustedFiles": "open",
   "files.exclude": {
-    "**/CVS": true,
     "**/.DS_Store": true,
+    "**/.git": true,
     "**/.hg": true,
     "**/.svn": true,
-    "**/.git": true
+    "**/CVS": true,
+    "**/node_modules": true
   },
+  "editor.formatOnSave": true,
   "gitlens.codeLens.enabled": false,
   "workbench.iconTheme": "material-icon-theme",
   "git.confirmSync": false,
@@ -227,7 +231,17 @@ module.exports = {
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
+
 
 ```
