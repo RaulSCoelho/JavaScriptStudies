@@ -14,7 +14,7 @@ export const Navbar: React.FC = () => {
     { text: 'Image', path: 'css-things/image' },
     { text: 'WritingMode', path: 'css-things/writingMode' },
     { text: 'Positioning', path: 'css-things/positioning' },
-    { text: 'ObjectFit', path: 'css-things' },
+    { text: 'ObjectFit', path: 'css-things' }
   ]
 
   return (
@@ -37,7 +37,7 @@ const Page = ({ text, path }) => {
     cursor: 'pointer',
     color: '#F5F5F5',
     backgroundColor: '#966EED',
-    boxShadow: '4px 6px 5px 2px rgba(0, 0, 0, 0.2)',
+    boxShadow: '4px 6px 5px 2px rgba(0, 0, 0, 0.2)'
   }
 
   return (

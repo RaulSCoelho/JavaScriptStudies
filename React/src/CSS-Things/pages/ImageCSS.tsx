@@ -23,7 +23,7 @@ export const ImageCSS: React.FC = () => {
 
 const Flex = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 53px);
   overflow: auto;
   scroll-behavior: smooth;
 
@@ -45,6 +45,7 @@ const Flex = styled.div`
       a {
         display: flex;
         background-color: #d9f0ff;
+        color: black;
         justify-content: center;
         width: 100%;
         text-decoration: none;

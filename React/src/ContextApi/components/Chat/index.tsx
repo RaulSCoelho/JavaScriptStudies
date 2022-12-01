@@ -13,7 +13,7 @@ export const Chat = () => {
 
     onNewMessage({
       author: 'Raul Semicek Coelho',
-      text: faker.lorem.paragraph(),
+      text: faker.lorem.paragraph()
     })
   }
 

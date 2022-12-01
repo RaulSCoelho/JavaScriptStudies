@@ -21,7 +21,7 @@ function Sidebar() {
                     style={{
                       textAlign: 'center',
                       margin: '10px',
-                      cursor: 'pointer',
+                      cursor: 'pointer'
                     }}
                     onClick={() =>
                       dispatch(CourseActions.toggleLesson(module, lesson))

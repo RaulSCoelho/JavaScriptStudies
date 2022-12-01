@@ -25,10 +25,10 @@ export const ChatContext = createContext({} as ChatContextType)
 
 export function ChatProvider({ children }) {
   const [messages, setMessages] = useState<Message[]>([
-    { id: '1', author: 'Admin', text: 'Initial Message' },
+    { id: '1', author: 'Admin', text: 'Initial Message' }
   ])
   const [connected, setConnected] = useState<User[]>([
-    { id: '1', name: 'Admin' },
+    { id: '1', name: 'Admin' }
   ])
 
   const onNewMessage = useCallback(({ author, text }: Omit<Message, 'id'>) => {
@@ -37,7 +37,7 @@ export function ChatProvider({ children }) {
     const message = {
       id,
       author,
-      text,
+      text
     }
     setMessages(state => [...state, message])
   }, [])
@@ -47,7 +47,7 @@ export function ChatProvider({ children }) {
 
     const user = {
       id,
-      name,
+      name
     }
     setConnected(state => [...state, user])
   }, [])
@@ -58,7 +58,7 @@ export function ChatProvider({ children }) {
         messages,
         connected,
         onNewMessage,
-        onUserConnected,
+        onUserConnected
       }}
     >
       {children}

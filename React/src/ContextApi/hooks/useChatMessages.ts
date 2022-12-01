@@ -11,6 +11,6 @@ export function useChatMessages() {
 
   return {
     messages,
-    onNewMessage,
+    onNewMessage
   }
 }

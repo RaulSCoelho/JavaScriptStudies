@@ -4,23 +4,23 @@ const modules = [
     title: 'Iniciando com React',
     lessons: [
       { id: 1, title: 'Primeira aula' },
-      { id: 2, title: 'Segunda aula' },
-    ],
+      { id: 2, title: 'Segunda aula' }
+    ]
   },
   {
     id: 2,
     title: 'Aprendendo Redux',
     lessons: [
       { id: 1, title: 'Terceira aula' },
-      { id: 2, title: 'Quarta aula' },
-    ],
-  },
+      { id: 2, title: 'Quarta aula' }
+    ]
+  }
 ]
 
 const INITIAL_STATE = {
   activeLesson: modules[0].lessons[0],
   activeModule: modules[0],
-  modules,
+  modules
 }
 
 export default function course(state = INITIAL_STATE, action) {
@@ -29,7 +29,7 @@ export default function course(state = INITIAL_STATE, action) {
       return {
         ...state,
         activeLesson: action.lesson,
-        activeModule: action.module,
+        activeModule: action.module
       }
     default:
       return state

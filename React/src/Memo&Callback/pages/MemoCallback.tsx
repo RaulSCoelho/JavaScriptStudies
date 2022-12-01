@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react'
 
-import { Flex } from 'components/Flex'
-import { Item } from 'Memo&Callback/components/Item'
+import { Flex } from '../../components/Flex'
+import { Item } from '../components/Item'
 
 export const MemoCallback: React.FC = () => {
   const [items, setItems] = useState<string[]>([])
@@ -12,7 +12,7 @@ export const MemoCallback: React.FC = () => {
     if (!items.includes(newItem)) {
       setItems([
         ...items,
-        newItem === '' ? `item ${items.length + 1}` : newItem,
+        newItem === '' ? `item ${items.length + 1}` : newItem
       ])
       setNewItem('')
     }

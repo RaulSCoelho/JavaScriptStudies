@@ -1,35 +1,35 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react'
 
-interface Product {
+type Product = {
   id: number
   name: string
   price: number
 }
 
-interface Cart {
+type Cart = {
   products: Product[]
   shipping_price?: number
 }
 
-interface CartContextType {
+type CartContextType = {
   cart: Cart
   addProduct: (product: Product) => void
 }
 
-const CartContext = createContext<CartContextType>(null)
+const CartContext = createContext({} as CartContextType)
 
 export default CartContext
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState<Cart>({
-    products: [{ id: 1, name: 'Carne', price: 50 }],
+    products: [{ id: 1, name: 'Carne', price: 50 }]
   })
 
   useEffect(() => {
     setCart(state => {
       const newCart: Cart = {
         products: [...state.products, { id: 2, name: 'Agua', price: 3 }],
-        shipping_price: state.shipping_price,
+        shipping_price: state.shipping_price
       }
       return newCart
     })
@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
     setCart(state => {
       const newCart: Cart = {
         products: [...state.products, product],
-        shipping_price: state.shipping_price,
+        shipping_price: state.shipping_price
       }
       return newCart
     })
@@ -47,7 +47,7 @@ export const CartProvider = ({ children }) => {
 
   const contextData = {
     cart,
-    addProduct,
+    addProduct
   }
 
   return (

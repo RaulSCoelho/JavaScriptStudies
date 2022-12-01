@@ -14,6 +14,6 @@ export const pallete = {
     pink: '#FF79C6',
     orange: '#FFB86C',
     lightBlue: '#D9F0FF',
-    purple: '#966EED',
-  },
+    purple: '#966EED'
+  }
 }

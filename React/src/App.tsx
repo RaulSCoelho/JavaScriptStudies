@@ -1,11 +1,10 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
-import { Box } from 'components/Box'
-import AppContext from 'context'
-import { Navbar } from 'CSS-Things/components/Navbar'
-import { Router } from 'Router'
-
+import { Box } from './components/Box'
+import AppContext from './context'
+import { Navbar } from './CSS-Things/components/Navbar'
+import { Router } from './Router'
 import GlobalStyle from './styles/global'
 
 const App: React.FC = () => {

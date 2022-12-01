@@ -22,12 +22,12 @@ function reducer(state: State, action: ActionType) {
     case 'ADD_TODO':
       return {
         todos: [...state.todos, action.todo],
-        todoCount: state.todoCount + 1,
+        todoCount: state.todoCount + 1
       }
     case 'REMOVE_TODO':
       return {
         todos: state.todos.filter(todo => todo.id !== action.todo.id),
-        todoCount: state.todoCount - 1,
+        todoCount: state.todoCount - 1
       }
     default:
       return state
@@ -37,13 +37,13 @@ function reducer(state: State, action: ActionType) {
 export const Todos: React.FC = () => {
   const [{ todos, todoCount }, dispatch] = useReducer(reducer, {
     todos: [],
-    todoCount: 0,
+    todoCount: 0
   })
   const [todo, setTodo] = useState('')
 
   const newTodo: Todo = {
     id: Number(uuid()),
-    todo,
+    todo
   }
 
   return (
@@ -51,7 +51,7 @@ export const Todos: React.FC = () => {
       style={{
         border: '2px dashed #3ab0ff',
         padding: '10px',
-        marginTop: '15px',
+        marginTop: '15px'
       }}
     >
       <br />

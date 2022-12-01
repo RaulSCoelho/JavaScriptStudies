@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Location from 'React-Hooks/components/Location'
-import Repositories from 'React-Hooks/components/Repositories'
+import Location from '../components/Location'
+import Repositories from '../components/Repositories'
 
 export const ReactHooks: React.FC = () => {
   return (

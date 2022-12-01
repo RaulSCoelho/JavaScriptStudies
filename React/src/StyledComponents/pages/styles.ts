@@ -1,12 +1,13 @@
+import { Property } from 'csstype'
 import styled from 'styled-components'
 
 interface TitleProps {
-  fontSize?: number
+  fontSize?: Property.FontSize
 }
 
 export const Title = styled.h1<TitleProps>`
   color: #f00;
-  font-size: ${props => `${props.fontSize}px`};
+  font-size: ${props => props.fontSize};
 
   span {
     font-size: 12px;

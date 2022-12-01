@@ -2,17 +2,17 @@ const fetchData = ({
   includeCredentials = true,
   method = 'GET',
   payload,
-  url,
+  url
 }) => {
   const options = {
     method,
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     mode: 'cors',
     redirect: 'follow',
-    referrerPolicy: 'origin',
+    referrerPolicy: 'origin'
   }
 
   if (includeCredentials) options.credentials = 'include'
@@ -35,7 +35,7 @@ const GET = async (url, includeCredentials) => {
   const response = await fetchData({
     includeCredentials,
     method,
-    url,
+    url
   })
 
   return response
@@ -47,7 +47,7 @@ const POST = async (includeCredentials, payload, url) => {
     includeCredentials,
     method,
     payload,
-    url,
+    url
   })
 
   return response
@@ -57,5 +57,5 @@ export const FETCH = {
   get: GET,
   post: POST,
   patch: GET,
-  delete: GET,
+  delete: GET
 }

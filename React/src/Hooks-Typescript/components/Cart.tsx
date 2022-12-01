@@ -4,10 +4,10 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-  useState,
+  useState
 } from 'react'
 
-import CartContext from 'Hooks-Typescript/context/CartContext'
+import CartContext from '../context/CartContext'
 
 interface Product {
   id: number
@@ -36,7 +36,7 @@ export const Cart: React.FC = () => {
     setProduct({
       id,
       name,
-      price,
+      price
     })
   }, [])
 

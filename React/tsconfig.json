@@ -1,17 +1,20 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "target": "es2017",
-    "module": "commonjs",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable"],
     "allowJs": true,
-    "noEmit": true,
-    "strict": false,
-    "esModuleInterop": true,
     "skipLibCheck": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "baseUrl": "./src"
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
   },
-  "include": ["src"],
+  "include": ["react-app-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

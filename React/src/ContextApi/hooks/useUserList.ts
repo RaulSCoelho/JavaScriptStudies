@@ -11,6 +11,6 @@ export function useUserList() {
 
   return {
     connected,
-    onUserConnected,
+    onUserConnected
   }
 }
