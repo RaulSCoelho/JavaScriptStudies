@@ -32,6 +32,26 @@ module.exports = {
         printWidth: 80
       }
     ],
+    /* vvvvv ADD NEW HERE vvvvv */
+    'react/jsx-no-useless-fragment': 'warn',
+    'func-names': 'warn',
+    'no-param-reassign': 'warn',
+    'no-unused-vars': 'warn',
+    'prefer-const': 'warn',
+    'no-restricted-syntax': 'warn',
+    'object-shorthand': 'warn',
+    'react/jsx-props-no-spreading': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'react/jsx-curly-newline': 'off',
+    'default-param-last': 'off',
+    'no-use-before-define': 'off',
+    'arrow-parens': 'off',
+    'arrow-body-style': 'off',
+    'import/prefer-default-export': 'off',
+    'no-console': 'off',
+    'comma-dangle': 'off',
+    'react/button-has-type': 'off',
+    /* ^^^^^ ADD NEW HERE ^^^^^ */
     'react/display-name': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',

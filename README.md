@@ -27,50 +27,96 @@ end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
+
 ```
 
-# My .eslintrc.json
+# My .eslintrc.js
 ```
-{
-  "extends": "@rocketseat/eslint-config/react",
-  "plugins": ["import-helpers"],
-  "rules": {
-    "prettier/prettier": [
-      "error",
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    jest: true
+  },
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'standard',
+    'plugin:prettier/recommended'
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module'
+  },
+  plugins: ['react', 'jsx-a11y', '@typescript-eslint', 'import-helpers'],
+  rules: {
+    'prettier/prettier': [
+      'error',
       {
-        "singleQuote": true,
-        "arrowParens": "avoid",
-        "semi": false,
-        "endOfLine": "auto"
+        semi: false,
+        singleQuote: true,
+        arrowParens: 'avoid',
+        trailingComma: 'none',
+        endOfLine: 'auto',
+        tabWidth: 2,
+        printWidth: 80
       }
     ],
-    "react/jsx-no-useless-fragment": "warn",
-    "func-names": "warn",
-    "no-param-reassign": "warn",
-    "no-unused-vars": "warn",
-    "prefer-const": "warn",
-    "no-restricted-syntax": "warn",
-    "object-shorthand": "warn",
-    "react/prop-types": "off",
-    "react/jsx-props-no-spreading": "off",
-    "implicit-arrow-linebreak": "off",
-    "react/jsx-curly-newline": "off",
-    "default-param-last": "off",
-    "no-use-before-define": "off",
-    "arrow-parens": "off",
-    "arrow-body-style": "off",
-    "import/prefer-default-export": "off",
-    "no-console": "off",
-    "comma-dangle": "off",
-    "react/button-has-type": "off",
-    "import-helpers/order-imports": [
-      "warn",
+    /* vvvvv ADD NEW HERE vvvvv */
+    'react/jsx-no-useless-fragment': 'warn',
+    'func-names': 'warn',
+    'no-param-reassign': 'warn',
+    'no-unused-vars': 'warn',
+    'prefer-const': 'warn',
+    'no-restricted-syntax': 'warn',
+    'object-shorthand': 'warn',
+    'react/jsx-props-no-spreading': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'react/jsx-curly-newline': 'off',
+    'default-param-last': 'off',
+    'no-use-before-define': 'off',
+    'arrow-parens': 'off',
+    'arrow-body-style': 'off',
+    'import/prefer-default-export': 'off',
+    'no-console': 'off',
+    'comma-dangle': 'off',
+    'react/button-has-type': 'off',
+    /* ^^^^^ ADD NEW HERE ^^^^^ */
+    'react/display-name': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'jsx-a11y/alt-text': [
+      'warn',
       {
-        "newlinesBetween": "always", // new line between groups
-        "groups": ["/^react/", "module", ["parent", "sibling", "index"]],
-        "alphabetize": { "order": "asc", "ignoreCase": true }
+        elements: ['img'],
+        img: ['Image']
+      }
+    ],
+    'jsx-a11y/aria-props': 'warn',
+    'jsx-a11y/aria-proptypes': 'warn',
+    'jsx-a11y/aria-unsupported-elements': 'warn',
+    'jsx-a11y/role-has-required-aria-props': 'warn',
+    'jsx-a11y/role-supports-aria-props': 'warn',
+    'import-helpers/order-imports': [
+      'warn',
+      {
+        newlinesBetween: 'always', // new line between groups
+        groups: ['/^react/', 'module', ['parent', 'sibling', 'index']],
+        alphabetize: { order: 'asc', ignoreCase: true }
       }
     ]
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    },
+    'import/parsers': {
+      [require.resolve('@typescript-eslint/parser')]: ['.ts', '.tsx', '.d.ts']
+    }
   }
 }
 
@@ -84,28 +130,33 @@ module.exports = {
   arrowParens: 'avoid',
   trailingComma: 'none',
   endOfLine: 'auto'
-};
+}
+
 ```
 
 # My tsconfig.json
 ```
 {
   "compilerOptions": {
-    "jsx": "react",
-    "target": "es2017",
-    "module": "commonjs",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable"],
     "allowJs": true,
-    "noEmit": true,
-    "strict": false,
-    "esModuleInterop": true,
     "skipLibCheck": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "baseUrl": "./src"
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
   },
-  "include": ["src"],
+  "include": ["react-app-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
+
 ```
 
 # My VSCode User Settings JSON

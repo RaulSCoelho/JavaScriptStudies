@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export default function Location() {
-  const [location, setLocation] = useState({})
+  const [location, setLocation] = useState<any>({})
 
   useEffect(() => {
     const watchId = navigator.geolocation.watchPosition(handlePositionReceived)

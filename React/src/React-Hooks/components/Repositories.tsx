@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react'
 import { FcLike } from 'react-icons/fc'
 
-import { FETCH } from '../../services/fetch'
+import { getApiClient } from '../../services/api'
 
 export default function Repositories() {
   const [repositories, setRepositories] = useState([])
 
   useEffect(() => {
     async function fetchData() {
-      const response = await FETCH.get(
-        'https://api.github.com/users/RaulSCoelho/repos',
-        false
-      )
-      setRepositories(response)
+      const api = getApiClient('https://api.github.com/')
+      const response = await api.get('users/RaulSCoelho/repos')
+      setRepositories(response.data)
     }
     fetchData()
   }, [])
