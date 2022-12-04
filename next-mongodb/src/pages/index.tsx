@@ -3,10 +3,9 @@ import React, { useContext } from 'react'
 import Head from 'next/head'
 import { useTheme } from 'styled-components'
 
-import { Flex } from '../components/Flex'
-import { Switch } from '../components/Switch'
-import { UserContext } from '../context/UserContext'
-import useSettings from '../hooks/useSettings'
+import { Flex, Switch } from '../components'
+import { UserContext } from '../context'
+import { useSettings } from '../hooks'
 
 const Home: React.FC = () => {
   const { title } = useTheme()

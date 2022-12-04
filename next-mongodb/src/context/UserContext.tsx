@@ -18,7 +18,7 @@ type UserContextType = {
 
 export const UserContext = createContext({} as UserContextType)
 
-export const UserProvider = ({ children }) => {
+export default function UserProvider({ children }) {
   const getFakeUser = useCallback((): User => {
     faker.seed(12895671)
     const user: User = {

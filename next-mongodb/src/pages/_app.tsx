@@ -2,9 +2,7 @@ import React from 'react'
 
 import { parseCookies } from 'nookies'
 
-import SettingsProvider from '../context/SettingsContext'
-import ThemesProvider from '../context/ThemeContext'
-import { UserProvider } from '../context/UserContext'
+import { SettingsProvider, ThemesProvider, UserProvider } from '../context'
 import GlobalStyle from '../styles'
 
 export default function App({ Component, pageProps, cookies }) {
