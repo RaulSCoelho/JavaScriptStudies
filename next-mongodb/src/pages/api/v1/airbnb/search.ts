@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       ])
       .toArray()
 
-    res.send(rooms)
+    res.send(JSON.stringify(rooms))
   } catch (err) {
     console.log(err)
     res.status(400).send({ err })
