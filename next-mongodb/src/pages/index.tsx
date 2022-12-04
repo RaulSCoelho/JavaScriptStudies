@@ -1,16 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
+import { Flex, Switch } from 'components'
+import { useSettings } from 'hooks'
+import clientPromise from 'infra/mongodb'
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useTheme } from 'styled-components'
 
-import { Flex, Switch } from '../components'
-import { UserContext } from '../context'
-import { useSettings } from '../hooks'
+interface Props {
+  isConnected: boolean
+}
 
-const Home: React.FC = () => {
+const Home: NextPage<Props> = ({ isConnected }) => {
   const { title } = useTheme()
   const { onToggleTheme } = useSettings()
-  const { user } = useContext(UserContext)
 
   return (
     <Flex>
@@ -26,10 +29,28 @@ const Home: React.FC = () => {
         handleDiameter={16}
         offColor="#4566"
       />
-      <h1>{`Hello, ${user?.name}!`}</h1>
-      <img src={user?.avatar_url} alt="" />
+      {isConnected ? (
+        <h2>You are connected to MongoDB</h2>
+      ) : (
+        <h2>You are NOT connected to MongoDB.</h2>
+      )}
     </Flex>
   )
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  try {
+    await clientPromise
+
+    return {
+      props: { isConnected: true }
+    }
+  } catch (err) {
+    console.log(err)
+    return {
+      props: { isConnected: false }
+    }
+  }
+}

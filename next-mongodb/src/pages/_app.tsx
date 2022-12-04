@@ -1,18 +1,15 @@
 import React from 'react'
 
+import { SettingsProvider, ThemesProvider } from 'context'
 import { parseCookies } from 'nookies'
-
-import { SettingsProvider, ThemesProvider, UserProvider } from '../context'
-import GlobalStyle from '../styles'
+import GlobalStyle from 'styles'
 
 export default function App({ Component, pageProps, cookies }) {
   return (
     <SettingsProvider cookies={cookies}>
       <ThemesProvider>
-        <UserProvider>
-          <Component {...pageProps} />
-          <GlobalStyle />
-        </UserProvider>
+        <Component {...pageProps} />
+        <GlobalStyle />
       </ThemesProvider>
     </SettingsProvider>
   )

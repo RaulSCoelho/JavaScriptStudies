@@ -1,9 +1,8 @@
 import React from 'react'
 
+import useSettings from 'hooks/useSettings'
 import { ThemeProvider } from 'styled-components'
-
-import useSettings from '../hooks/useSettings'
-import themes from '../styles/themes'
+import themes from 'styles/themes'
 
 export default function ThemesProvider({ children }) {
   const { settings } = useSettings()
