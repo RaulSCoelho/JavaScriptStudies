@@ -3,7 +3,7 @@ import nextConnect from 'next-connect'
 
 import controller from './controller'
 
-interface NextApiRequestCustom extends NextApiRequest {
+export interface NextApiRequestCustom extends NextApiRequest {
   userId: number
   username: string
 }

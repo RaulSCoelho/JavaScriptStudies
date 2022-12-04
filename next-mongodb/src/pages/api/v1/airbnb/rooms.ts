@@ -1,9 +1,10 @@
 import { connectToDatabase } from 'infra/mongodb'
-import nextConnect from 'models/nextConnect'
+import nextConnect, { NextApiRequestCustom } from 'models/nextConnect'
+import { NextApiResponse } from 'next'
 
 export default nextConnect.get(getMiddleware, getHandler)
 
-async function getHandler(req, res) {
+async function getHandler(req: NextApiRequestCustom, res: NextApiResponse) {
   const { db } = await connectToDatabase()
 
   const rooms = await db
@@ -35,7 +36,7 @@ async function getHandler(req, res) {
   res.send(JSON.stringify(roomsAdapted))
 }
 
-function getMiddleware(req, res, next) {
+function getMiddleware(req: NextApiRequestCustom, res: NextApiResponse, next) {
   // if (!req.userId) throw new UnauthorizedError()
   console.log(req.userId)
   console.log(req.username)
