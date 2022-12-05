@@ -13,7 +13,7 @@ export interface StyleProps {
 
 export const Flex = styled.div<StyleProps>`
   display: flex;
-  gap: ${props => `${props.gap}px`};
+  gap: ${props => props.gap};
   width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
   flex-direction: ${props => props.direction || 'column'};

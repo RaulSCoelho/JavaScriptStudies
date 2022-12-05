@@ -15,6 +15,8 @@ import { MemoCallback } from './Memo&Callback/pages/MemoCallback'
 import { ReactHooks } from './React-Hooks/pages/ReactHooks'
 import { Redux } from './Redux/pages/Redux'
 import { StyledComponents } from './StyledComponents/pages/StyledComponents'
+import RepoDetail from './SWR/pages/RepoDetail'
+import Repos from './SWR/pages/Repos'
 import { ThemeSwitcher } from './ThemeSwitcher/pages/ThemeSwitcher'
 
 export function Router() {
@@ -23,6 +25,9 @@ export function Router() {
       <Route path="/" element={<Navigate to="theme-switcher" />} />
       {/* ThemeSwitcher */}
       <Route path="theme-switcher" element={<ThemeSwitcher />} />
+      {/* SWR */}
+      <Route path="swr/repos" element={<Repos />} />
+      <Route path="swr/repos/:repoName" element={<RepoDetail />} />
       {/* StyledComponents */}
       <Route path="styled-components" element={<StyledComponents />} />
       {/* Redux */}
