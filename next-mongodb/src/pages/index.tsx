@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { api } from 'api'
 import { Flex, Switch } from 'components'
 import Card from 'components/Card'
 import { useSettings } from 'hooks'
 import { Room } from 'infra/types/airbnb'
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
+import { api } from 'services'
 import { useTheme } from 'styled-components'
 
 interface Props {

@@ -25,9 +25,11 @@ async function getHandler(req: NextApiRequestCustom, res: NextApiResponse) {
   const roomsAdapted = rooms.map(room => {
     const price = JSON.parse(JSON.stringify(room.price)).$numberDecimal
     return {
-      ...room,
-      images: undefined,
+      _id: room._id,
+      name: room.name,
       image: room.images.picture_url,
+      address: room.address,
+      summary: room.summary,
       guests: room.accommodates,
       price
     }

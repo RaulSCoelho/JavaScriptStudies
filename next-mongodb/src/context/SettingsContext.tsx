@@ -19,9 +19,9 @@ const defaultSettings: Settings = {
 }
 
 const restoreSettings = (cookies): Settings => {
-  const { settings: storedData } = cookies
-  if (storedData) {
-    return JSON.parse(storedData)
+  const { settings } = cookies
+  if (settings) {
+    return JSON.parse(settings)
   }
   return defaultSettings
 }

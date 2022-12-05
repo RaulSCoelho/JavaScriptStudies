@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { api } from 'api'
 import { Button } from 'components/Button'
 import { Room } from 'infra/types/airbnb'
+import { api } from 'services'
 
 import { CardStyle } from './styles'
 
