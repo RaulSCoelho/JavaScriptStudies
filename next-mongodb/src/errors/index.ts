@@ -2,9 +2,9 @@ import { v4 as uuid } from 'uuid'
 
 // Base
 interface BaseProps {
-  message?: string
-  action?: string
-  statusCode?: number
+  message: string
+  action: string
+  statusCode: number
   errorId?: string
   stack?: any
 }
@@ -14,39 +14,14 @@ class BaseError extends Error {
   statusCode: number
   errorId?: string
 
-  constructor(props?: BaseProps) {
+  constructor(props: BaseProps) {
     super()
     this.name = this.constructor.name
-    this.message = props?.message
-    this.action = props?.action
-    this.statusCode = props?.statusCode || 500
-    this.errorId = props?.errorId || uuid()
-    this.stack = props?.stack
-  }
-}
-
-// InternalServer
-interface InternalServerProps {
-  message?: string
-  action?: string
-  statusCode?: number
-  errorId?: string
-  stack?: any
-}
-
-export class InternalServerError extends BaseError {
-  constructor(props?: InternalServerProps) {
-    const defaultMessage = 'Um erro interno não esperado aconteceu.'
-    const defaultAction =
-      "Informe ao suporte o valor encontrado no campo 'errorId'."
-
-    super({
-      message: props?.message || defaultMessage,
-      action: props?.action || defaultAction,
-      statusCode: props?.statusCode || 500,
-      errorId: props?.errorId,
-      stack: props?.stack
-    })
+    this.message = props.message
+    this.action = props.action
+    this.statusCode = props.statusCode || 500
+    this.errorId = props.errorId || uuid()
+    this.stack = props.stack
   }
 }
 
@@ -107,7 +82,7 @@ export class UnauthorizedError extends BaseError {
   constructor(props?: UnauthorizedProps) {
     const defaultMessage = 'Usuário não autenticado.'
     const defaultAction =
-      'Verifique se você está autenticado com uma sessão ativa e tente novamente.'
+      'Verifique se você está autenticado e tente novamente.'
 
     super({
       message: props?.message || defaultMessage,
@@ -135,6 +110,28 @@ export class ForbiddenError extends BaseError {
       message: props?.message || defaultMessage,
       action: props?.action || defaultAction,
       statusCode: 403,
+      stack: props?.stack
+    })
+  }
+}
+
+// Validation
+interface ValidationProps {
+  message?: string
+  action?: string
+  statusCode?: number
+  stack?: any
+}
+
+export class ValidationError extends BaseError {
+  constructor(props?: ValidationProps) {
+    const defaultMessage = 'Um erro de validação ocorreu.'
+    const defaultAction = 'Ajuste os dados enviados e tente novamente.'
+
+    super({
+      message: props?.message || defaultMessage,
+      action: props?.action || defaultAction,
+      statusCode: props?.statusCode || 400,
       stack: props?.stack
     })
   }
