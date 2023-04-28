@@ -1,0 +1,28 @@
+{
+  "extends": ["next/core-web-vitals", "@rocketseat/eslint-config/react"],
+  "plugins": ["import-helpers"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": false,
+        "singleQuote": true,
+        "arrowParens": "avoid",
+        "trailingComma": "none",
+        "endOfLine": "auto",
+        "tabWidth": 2,
+        "printWidth": 120
+      }
+    ],
+    "camelcase": "off",
+    "no-redeclare": "off",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always", // new line between groups
+        "groups": ["/^react/", "module", ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  }
+}
