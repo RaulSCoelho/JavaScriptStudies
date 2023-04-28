@@ -1,22 +1,17 @@
 import { z } from 'zod'
 
+import { getAllUsers, getUserById } from '../lib/users'
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
-export const usersRouter = createTRPCRouter({
-  getById: publicProcedure
-    .input(
-      z.object({
-        id: z.number()
-      })
-    )
-    .query(({ input }) => {
-      const users = [
-        { id: 0, name: 'Raul' },
-        { id: 1, name: 'Aline' },
-        { id: 2, name: 'Andrey' },
-        { id: 3, name: 'Caio' }
-      ]
+const userIdSchema = z.object({
+  id: z.number()
+})
 
-      return users.find(u => u.id === input.id)
-    })
+export const usersRouter = createTRPCRouter({
+  getAll: publicProcedure.query(() => {
+    return getAllUsers()
+  }),
+  getById: publicProcedure.input(userIdSchema).query(({ input }) => {
+    return getUserById(input.id)
+  })
 })
