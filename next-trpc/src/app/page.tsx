@@ -1,13 +1,9 @@
-'use client'
-
-import { trpc } from '@/utils/trpc-provider'
+import { CreateUserForm } from '@/components/CreateUserForm'
 
 export default function Home() {
-  const { data } = trpc.users.getById.useQuery({ id: 0 })
-
   return (
-    <div>
-      <h1>Hello {data?.name}</h1>
+    <div className="flex items-center justify-center">
+      <CreateUserForm />
     </div>
   )
 }
