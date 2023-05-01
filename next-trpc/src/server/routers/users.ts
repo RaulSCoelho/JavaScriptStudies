@@ -19,7 +19,7 @@ export const usersRouter = createTRPCRouter({
   create: publicProcedure.input(userSchema.omit({ _id: true })).mutation(async ({ ctx, input }) => {
     return await createUser(ctx, input)
   }),
-  login: publicProcedure.input(userLoginSchema).query(async ({ ctx, input }) => {
+  login: publicProcedure.input(userLoginSchema).mutation(async ({ ctx, input }) => {
     return await loginUser(ctx, input)
   }),
   getAll: publicProcedure.query(async ({ ctx }) => {
@@ -28,10 +28,10 @@ export const usersRouter = createTRPCRouter({
   getById: publicProcedure.input(userIdSchema).query(async ({ ctx, input }) => {
     return await getUserById(ctx, input._id)
   }),
-  update: publicProcedure.input(userUpdateSchema).query(async ({ ctx, input }) => {
+  update: publicProcedure.input(userUpdateSchema).mutation(async ({ ctx, input }) => {
     return await updateUser(ctx, input._id, input.user)
   }),
-  delete: publicProcedure.input(userIdSchema).query(async ({ ctx, input }) => {
+  delete: publicProcedure.input(userIdSchema).mutation(async ({ ctx, input }) => {
     return await deleteUser(ctx, input._id)
   })
 })

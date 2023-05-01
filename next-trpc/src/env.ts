@@ -1,15 +1,24 @@
 import { z } from 'zod'
 
 const server = z.object({
+  PORT: z.string().optional(),
+  VERCEL_URL: z.string().optional(),
+  NODE_ENV: z.enum(['development', 'test', 'production']),
   MONGODB_URI: z.string().url(),
   MONGODB_DB: z.string()
 })
 
-const client = z.object({})
+const client = z.object({
+  NEXT_PUBLIC_VERCEL_URL: z.string().optional()
+})
 
 const processEnv = {
+  PORT: process.env.PORT,
+  VERCEL_URL: process.env.VERCEL_URL,
+  NODE_ENV: process.env.NODE_ENV,
   MONGODB_URI: process.env.MONGODB_URI,
-  MONGODB_DB: process.env.MONGODB_DB
+  MONGODB_DB: process.env.MONGODB_DB,
+  NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL
 }
 
 // Don't touch the part below
@@ -18,7 +27,8 @@ const processEnv = {
 const merged = server.merge(client)
 /** @type z.infer<merged>
  *  @ts-ignore - can't type this properly in jsdoc */
-let env = process.env
+// eslint-disable-next-line no-unused-vars
+let env: { [K in keyof typeof processEnv]: string } = process.env
 
 if (!!process.env.SKIP_ENV_VALIDATION === false) {
   const isServer = typeof window === 'undefined'

@@ -1,4 +1,4 @@
-import { env } from '@/env.mjs'
+import { env } from '@/env'
 import { MongoClient } from 'mongodb'
 
 if (!env.MONGODB_URI) {
