@@ -1,5 +1,5 @@
 {
-  "name": "next-trpc",
+  "name": "next-auth-and-trpc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
