@@ -25,6 +25,8 @@ if (env.NODE_ENV === 'development') {
   clientPromise = client.connect()
 }
 
+export default clientPromise
+
 export async function connectToDatabase(database = env.MONGODB_DB) {
   const client = await clientPromise
   const db = client.db(database)

@@ -5,7 +5,15 @@ const server = z.object({
   VERCEL_URL: z.string().optional(),
   NODE_ENV: z.enum(['development', 'test', 'production']),
   MONGODB_URI: z.string().url(),
-  MONGODB_DB: z.string()
+  MONGODB_DB: z.string(),
+  NEXTAUTH_SECRET: z.string(),
+  GOOGLE_CLIENT_ID: z.string(),
+  GOOGLE_CLIENT_SECRET: z.string(),
+  NODEMAILER_HOST: z.string(),
+  NODEMAILER_PORT: z.string(),
+  NODEMAILER_USER: z.string(),
+  NODEMAILER_PASS: z.string(),
+  NODEMAILER_FROM: z.string()
 })
 
 const client = z.object({
@@ -18,6 +26,14 @@ const processEnv = {
   NODE_ENV: process.env.NODE_ENV,
   MONGODB_URI: process.env.MONGODB_URI,
   MONGODB_DB: process.env.MONGODB_DB,
+  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+  NODEMAILER_HOST: process.env.NODEMAILER_HOST,
+  NODEMAILER_PORT: process.env.NODEMAILER_PORT,
+  NODEMAILER_USER: process.env.NODEMAILER_USER,
+  NODEMAILER_PASS: process.env.NODEMAILER_PASS,
+  NODEMAILER_FROM: process.env.NODEMAILER_FROM,
   NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL
 }
 

@@ -1,15 +1,11 @@
 import { userPartialSchema, userSchema } from '@/types/users'
 import { z } from 'zod'
 
-import { createUser, deleteUser, getAllUsers, getUserById, loginUser, updateUser } from '../lib/users'
+import { createUser, deleteUser, getAllUsers, getUserById, updateUser } from '../lib/users'
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
 const userIdSchema = z.object({
   _id: z.string()
-})
-const userLoginSchema = z.object({
-  login: z.string(),
-  password: z.string()
 })
 const userUpdateSchema = userIdSchema.extend({
   user: userPartialSchema
@@ -18,9 +14,6 @@ const userUpdateSchema = userIdSchema.extend({
 export const usersRouter = createTRPCRouter({
   create: publicProcedure.input(userSchema.omit({ _id: true })).mutation(async ({ ctx, input }) => {
     return await createUser(ctx, input)
-  }),
-  login: publicProcedure.input(userLoginSchema).mutation(async ({ ctx, input }) => {
-    return await loginUser(ctx, input)
   }),
   getAll: publicProcedure.query(async ({ ctx }) => {
     return await getAllUsers(ctx)

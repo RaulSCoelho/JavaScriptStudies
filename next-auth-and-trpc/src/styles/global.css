@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+  :root {
+    --color-fill: 241, 250, 238; /*#f1faee*/
+    --color-fill-primary: 193, 18, 31; /*#c1121f*/
+    --color-fill-secundary: 239, 35, 60; /*#ef233c*/
+    --color-text-base: 45, 45, 45; /*#2d2d2d*/
+    --color-text-muted: 160, 174, 192; /*#a0aec0*/
+    --color-text-inverted: 248, 248, 242; /*#f8f8f2*/
+    --color-button: 193, 18, 31; /*#c1121f*/
+    --color-button-hover: 159, 14, 24; /*#9f0e18ff*/
+  }
+
+  .theme-dark {
+    --color-fill: 22, 26, 29; /*#161a1d*/
+    --color-fill-primary: 102, 7, 8; /*#660708*/
+    --color-fill-secundary: 164, 22, 26; /*#a4161a*/
+    --color-text-base: 248, 248, 242; /*#f8f8f2*/
+    --color-text-muted: 160, 174, 192; /*#a0aec0*/
+    --color-text-inverted: 45, 45, 45; /*#2d2d2d*/
+    --color-button: 102, 7, 8; /*#660708*/
+    --color-button-hover: 138, 10, 12; /*#8a0a0cff*/
+  }
+}
