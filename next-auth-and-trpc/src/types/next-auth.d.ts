@@ -1,5 +1,4 @@
 import { DefaultSession } from 'next-auth'
-import { DefaultJWT } from 'next-auth/jwt'
 
 import { User as CustomUser } from './users'
 
@@ -13,8 +12,13 @@ declare module 'next-auth' {
 }
 
 declare module 'next-auth/jwt' {
-  interface JWT extends DefaultJWT {
-    _id: string
-    is_admin?: boolean
+  interface JWT {
+    user: {
+      _id: string
+      name: string
+      username: string
+      email: string
+      is_admin?: boolean
+    }
   }
 }

@@ -14,15 +14,18 @@ export const authOptions: AuthOptions = {
   callbacks: {
     session({ session, token }) {
       if (token) {
-        session.user._id = token._id
-        session.user.is_admin = token.is_admin
+        session.user = { ...token.user } as any
       }
       return session
     },
     jwt({ user, token }) {
       if (user) {
-        token._id = user._id
-        token.is_admin = user.is_admin
+        token.user = {} as any
+        token.user._id = user._id
+        token.user.name = user.name ?? ''
+        token.user.username = user.username
+        token.user.email = user.email ?? ''
+        token.user.is_admin = user.is_admin
       }
       return token
     }
