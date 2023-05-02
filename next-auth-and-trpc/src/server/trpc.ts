@@ -17,7 +17,7 @@ export async function createTRPCContext(opts: CreateNextContextOptions): Promise
   const { req, res } = opts
   const { db } = await connectToDatabase()
   const session = await getServerAuthSession({ req, res })
-  console.log(session)
+
   return {
     session,
     db
