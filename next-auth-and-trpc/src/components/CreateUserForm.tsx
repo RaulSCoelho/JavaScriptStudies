@@ -2,7 +2,8 @@
 import { useForm } from 'react-hook-form'
 
 import { CreateUser } from '@/types/users'
-import { trpc } from '@/utils/trpc-provider'
+
+import { trpc } from './Providers/TRPCProvider'
 
 export function CreateUserForm() {
   const { register, handleSubmit } = useForm<CreateUser>()

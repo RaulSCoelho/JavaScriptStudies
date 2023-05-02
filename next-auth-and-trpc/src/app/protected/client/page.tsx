@@ -1,6 +1,6 @@
 'use client'
+import { SignOut } from '@/components/SignOut'
 import { useSafeClientRoute } from '@/hooks/useSafeClientRoute'
-import { signOut } from 'next-auth/react'
 
 export default async function ProtectedClient() {
   const { session, status } = await useSafeClientRoute({ redirect: '/protected/client' })
@@ -11,12 +11,7 @@ export default async function ProtectedClient() {
         <a href="/" className="rounded bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600">
           Home
         </a>
-        <button
-          onClick={() => signOut({ callbackUrl: '/' })}
-          className="cursor-pointer rounded bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600"
-        >
-          Logout
-        </button>
+        <SignOut />
       </div>
       <h1>{status}</h1>
       {session && <h1>{JSON.stringify(session, null, 2)}</h1>}

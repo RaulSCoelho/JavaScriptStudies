@@ -36,4 +36,4 @@ export const userCreationSchema = userSchema.omit({ _id: true })
 export const userPartialSchema = userSchema.partial()
 export type User = z.infer<typeof userSchema>
 export type UserPartial = z.infer<typeof userPartialSchema>
-export type CreateUser = z.infer<typeof userPartialSchema>
+export type CreateUser = z.infer<typeof userCreationSchema>

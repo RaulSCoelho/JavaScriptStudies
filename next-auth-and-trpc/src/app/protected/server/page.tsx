@@ -1,3 +1,4 @@
+import { SignOut } from '@/components/SignOut'
 import { useSafeServerRoute } from '@/hooks/useSafeServerRoute'
 
 export default async function ProtectedServer() {
@@ -9,9 +10,7 @@ export default async function ProtectedServer() {
         <a href="/" className="rounded bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600">
           Home
         </a>
-        <a href="/api/auth/signout" className="rounded bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600">
-          Logout
-        </a>
+        <SignOut />
       </div>
       {session && <h1>{JSON.stringify(session, null, 2)}</h1>}
     </div>

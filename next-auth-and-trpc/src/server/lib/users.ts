@@ -1,9 +1,9 @@
-import { CreateUser, LoginRequest, User, UserPartial } from '@/types/users'
+import { CreateUser, User, UserPartial } from '@/types/users'
 import { TRPCError } from '@trpc/server'
 
 import { findAll, findOneById, insertOne, updateOne, deleteOneById, findOne } from '../database/base'
 import { CreateContextOptions } from '../trpc'
-import { hashWord, isHashValid } from './hash'
+import { hashWord } from './hash'
 
 // USER CREATION
 export async function createUser(ctx: CreateContextOptions, user: CreateUser): Promise<User> {
@@ -27,28 +27,6 @@ export async function createUser(ctx: CreateContextOptions, user: CreateUser): P
 
   const created = await insertOne<User>({ db, collection: 'users', data: user })
   return created
-}
-
-// USER LOGIN
-export async function loginUser(ctx: CreateContextOptions, { login, password }: LoginRequest): Promise<User> {
-  const { db } = ctx
-  // Check if the user is already on DB
-  const user = await findOne<User>({ db, collection: 'users', search: [{ username: login }, { email: login }] })
-
-  if (!user) {
-    throw new TRPCError({ code: 'BAD_REQUEST', message: 'Invalid username or password' })
-  }
-
-  // Check if the password is correct
-  const validPass = await isHashValid(password, user.password)
-  if (!validPass) {
-    throw new TRPCError({ code: 'BAD_REQUEST', message: 'Invalid username or password' })
-  }
-
-  // Remove the password from the response
-  user.password = undefined as any
-
-  return user
 }
 
 // GET ALL USERS
