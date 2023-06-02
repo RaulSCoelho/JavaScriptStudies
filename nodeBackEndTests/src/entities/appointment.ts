@@ -2,6 +2,11 @@ export interface AppointmentProps {
   customer: string
   startsAt: Date
   endsAt: Date
+  teste?: string
+}
+
+export function teste() {
+  return 'teste'
 }
 
 export class Appointment {
@@ -19,6 +24,10 @@ export class Appointment {
     return this.props.endsAt
   }
 
+  get teste() {
+    return this.props.teste
+  }
+
   constructor(props: AppointmentProps) {
     const { startsAt, endsAt } = props
 
@@ -31,5 +40,6 @@ export class Appointment {
     }
 
     this.props = props
+    this.props.teste = 'teste'
   }
 }
