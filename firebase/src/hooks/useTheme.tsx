@@ -1,5 +1,13 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
+
+import { parseCookies, setCookie } from "nookies";
 
 type Theme = "default" | "dark";
 
@@ -10,8 +18,24 @@ type ThemesContextProps = {
 
 const ThemesContext = createContext({} as ThemesContextProps);
 
-export function ThemesProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("default");
+function restoreTheme() {
+  const { theme } = parseCookies();
+  return theme as Theme;
+}
+
+function storeTheme(theme: string) {
+  setCookie(undefined, "theme", theme, {
+    path: "/",
+    maxAge: 2147483647,
+  });
+}
+
+export function ThemesProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState<Theme>(() => {
+    const storedTheme = restoreTheme();
+    if (storedTheme) return storedTheme;
+    return "dark";
+  });
 
   const toggleTheme = () => {
     setTheme(theme === "default" ? "dark" : "default");
@@ -20,6 +44,7 @@ export function ThemesProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
     body.classList.toggle("theme-dark", theme === "dark");
+    storeTheme(theme);
   }, [theme]);
 
   return (

@@ -24,18 +24,20 @@ export function Register() {
       setLoading(true);
       setError("");
       await signUp(email, password);
-      push("/");
     } catch (err: any) {
       setError("Registration failed");
       console.log(err.message);
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
+  }
+
+  function handleLogin() {
+    push("/login");
   }
 
   return (
-    <div className="flex w-full max-w-[400px] flex-col justify-center rounded-md border p-4">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="flex w-full max-w-[400px] flex-col justify-center">
+      <form onSubmit={handleSubmit(onSubmit)} className="rounded-md border p-4">
         <h2 className="mb-4 text-center text-2xl font-bold">
           Create an account
         </h2>
@@ -76,6 +78,15 @@ export function Register() {
           Register
         </button>
       </form>
+      <div className="mt-2 flex justify-center gap-2">
+        <p>Already have an account?</p>
+        <p
+          className="cursor-pointer text-blue-400 underline"
+          onClick={handleLogin}
+        >
+          Sign In
+        </p>
+      </div>
     </div>
   );
 }

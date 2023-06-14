@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`${inter.className} h-full scroll-smooth antialiased`}
     >
-      <body className="bg-skin-fill" suppressHydrationWarning>
+      <body className="bg-skin-fill text-skin-base" suppressHydrationWarning>
         <ThemesProvider>
           <AuthProvider>
             <div className="flex h-screen items-center justify-center p-2 scrollbar scrollbar-track-transparent scrollbar-thumb-[#6b6b6b4b]">
