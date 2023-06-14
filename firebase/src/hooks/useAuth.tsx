@@ -9,7 +9,6 @@ import {
   signOut,
   updateEmail,
 } from "firebase/auth";
-import { useRouter } from "next/navigation";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 type AuthContextProps = {
@@ -25,7 +24,6 @@ const AuthContext = createContext({} as AuthContextProps);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User>();
   const [loading, setLoading] = useState(true);
-  const { push } = useRouter();
 
   function changeEmail(email: string) {
     user && updateEmail(user, email);
@@ -39,9 +37,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
-  async function logout() {
-    signOut(auth);
-    push("/login");
+  function logout() {
+    setUser(undefined);
+    return signOut(auth);
   }
 
   useEffect(() => {
