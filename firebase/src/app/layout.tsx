@@ -2,7 +2,7 @@ import "../styles/index.css";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { ThemesProvider } from "@/hooks/useTheme";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { AuthProvider } from "@/hooks/useAuth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +20,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`${inter.className} h-full scroll-smooth antialiased`}
     >
-      <body className="bg-skin-fill">
+      <body className="bg-skin-fill" suppressHydrationWarning>
         <ThemesProvider>
-          <ThemeSwitcher />
-          <div className="scrollbar scrollbar-track-transparent scrollbar-thumb-[#6b6b6b4b]">
-            {children}
-          </div>
+          <AuthProvider>
+            <div className="flex h-screen items-center justify-center p-2 scrollbar scrollbar-track-transparent scrollbar-thumb-[#6b6b6b4b]">
+              {children}
+            </div>
+          </AuthProvider>
         </ThemesProvider>
       </body>
     </html>
