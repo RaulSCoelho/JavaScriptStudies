@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "@/hooks/useAuth";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
 
 export function Login() {
   const {
@@ -14,7 +15,7 @@ export function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<SignInRequest>({ resolver: zodResolver(signInSchema) });
-  const { signIn } = useAuth();
+  const { signIn, signInWithGoogle } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { push } = useRouter();
@@ -32,6 +33,17 @@ export function Login() {
 
   function handleRegister() {
     push("/register");
+  }
+
+  async function loginWithGoogle() {
+    try {
+      setLoading(true);
+      setError("");
+      await signInWithGoogle();
+    } catch {
+      setError("Sign in with google failed");
+    }
+    setLoading(false);
   }
 
   return (
@@ -67,6 +79,19 @@ export function Login() {
           }`}
         >
           Sign In
+        </button>
+        <div className="my-2 flex items-center">
+          <hr className="flex-grow" />
+          <span className="px-2 text-gray-500">Or</span>
+          <hr className="flex-grow" />
+        </div>
+        <button
+          onClick={loginWithGoogle}
+          disabled={loading}
+          className="flex w-full items-center justify-center gap-4 rounded bg-white p-2 text-gray-500"
+        >
+          <FcGoogle size={24} />
+          Sign in with Google
         </button>
       </form>
       <div className="mt-2 flex justify-center gap-2">

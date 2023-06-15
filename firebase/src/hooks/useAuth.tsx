@@ -1,13 +1,14 @@
 "use client";
 import { auth } from "@/server/firebase";
 import {
+  GoogleAuthProvider,
   User,
   UserCredential,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
-  updateEmail,
 } from "firebase/auth";
 import React, { createContext, useContext, useState, useEffect } from "react";
 
@@ -16,6 +17,7 @@ type AuthContextProps = {
   isAuthenticated: boolean;
   signUp: (email: string, password: string) => Promise<UserCredential>;
   signIn: (email: string, password: string) => Promise<UserCredential>;
+  signInWithGoogle: () => Promise<UserCredential>;
   logout: () => Promise<void>;
 };
 
@@ -25,16 +27,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User>();
   const [loading, setLoading] = useState(true);
 
-  function changeEmail(email: string) {
-    user && updateEmail(user, email);
-  }
-
   function signUp(email: string, password: string) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
   function signIn(email: string, password: string) {
     return signInWithEmailAndPassword(auth, email, password);
+  }
+
+  async function signInWithGoogle() {
+    const googleAuthProvider = new GoogleAuthProvider();
+    return await signInWithPopup(auth, googleAuthProvider);
   }
 
   function logout() {
@@ -53,7 +56,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated: !!user, signUp, signIn, logout }}
+      value={{
+        user,
+        isAuthenticated: !!user,
+        signUp,
+        signIn,
+        signInWithGoogle,
+        logout,
+      }}
     >
       {!loading && children}
     </AuthContext.Provider>

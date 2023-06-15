@@ -1,6 +1,6 @@
 "use client";
 import { useTheme } from "@/hooks/useTheme";
-import { Sun, Moon } from "lucide-react";
+import { LuSun as Sun, LuMoon as Moon } from "react-icons/lu";
 
 export function ThemeSwitcher() {
   const { theme, toggleTheme } = useTheme();
