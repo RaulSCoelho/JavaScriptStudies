@@ -1,6 +1,6 @@
 import { env } from "@/env";
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"
+import { getAuth } from "firebase/auth";
 
 const app = initializeApp({
   apiKey: env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,5 +11,5 @@ const app = initializeApp({
   appId: env.NEXT_PUBLIC_FIREBASE_APP_ID
 });
 
-export const auth = getAuth(app)
-export default app
+export const auth = getAuth(app);
+export default app;

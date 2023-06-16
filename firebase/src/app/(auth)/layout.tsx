@@ -2,13 +2,14 @@
 
 import { useAuth } from "@/hooks/useAuth";
 import { ReactNode } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   const { isAuthenticated } = useAuth();
+  const { push } = useRouter();
   if (isAuthenticated) {
-    redirect("/");
+    push("/");
   }
 
-  return <>{children}</>;
+  return <div className="flex h-screen w-screen items-center justify-center">{children}</div>;
 }

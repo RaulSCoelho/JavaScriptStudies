@@ -2,19 +2,20 @@
 
 import { useAuth } from "@/hooks/useAuth";
 import { ReactNode } from "react";
-import { redirect } from "next/navigation";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { Header } from "./header";
+import { useRouter } from "next/navigation";
 
 export default function PrivateLayout({ children }: { children: ReactNode }) {
   const { isAuthenticated } = useAuth();
+  const { push } = useRouter();
   if (!isAuthenticated) {
-    redirect("/login");
+    push("/login");
   }
 
   return (
-    <div className="flex gap-4">
-      <ThemeSwitcher />
-      {children}
-    </div>
+    <>
+      <Header />
+      <div className="p-4">{children}</div>
+    </>
   );
 }

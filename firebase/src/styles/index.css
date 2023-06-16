@@ -5,19 +5,23 @@
 @layer base {
   :root {
     --color-fill: 255, 255, 255; /* #ffffff */
-    --color-text-base: 60, 60, 67; /* #3C3C43 */
-    --color-text-muted: 199, 210, 254; /* #c7d2fe */
+    --color-fill-primary: 199, 210, 254; /* #c7d2fe */
+    --color-fill-secondary: 230, 244, 243; /* #e6f4f3 */
+    --color-text-base: 60, 60, 67; /* #3c3c43 */
+    --color-text-muted: 160, 160, 167; /* #a0a0a7 */
     --color-text-inverted: 247, 250, 252; /* #f7fafc */
-    --color-button: 102, 126, 234; /* #667eea */
-    --color-button-hover: 76, 81, 191; /* #4c51bf */
+    --color-button: 199, 210, 254; /* #c7d2fe */
+    --color-button-hover: 179, 193, 245; /* #b3c1f5 */
   }
 
   .theme-dark {
     --color-fill: 45, 55, 72; /* #2d3748 */
+    --color-fill-primary: 189, 147, 249; /* #bd93f9 */
+    --color-fill-secondary: 60, 60, 67; /* #3c3c43 */
     --color-text-base: 247, 250, 252; /* #f7fafc */
     --color-text-muted: 160, 174, 192; /* #a0aec0 */
-    --color-text-inverted: 60, 60, 67; /* #3C3C43 */
-    --color-button: 102, 126, 234; /* #667eea */
-    --color-button-hover: 76, 81, 191; /* #4c51bf */
+    --color-text-inverted: 60, 60, 67; /* #2d2d2d */
+    --color-button: 189, 147, 249; /* #bd93f9 */
+    --color-button-hover: 139, 92, 246; /* #8b5cf6 */
   }
 }
