@@ -15,18 +15,14 @@ export function RaiseErrors() {
   }
 
   async function handleBackEndError() {
-    setSnackMessage("Back-end error raised, check the logs on Sentry.io");
     setIsLoading(true);
     await fetch("api/sentry");
     setIsLoading(false);
+    setSnackMessage("Back-end error raised, check the logs on Sentry.io");
   }
 
   function handleSnakClose() {
     setSnackMessage("");
-  }
-
-  function teste() {
-    setSnackMessage("Back-end error raised, check the logs on Sentry.io");
   }
 
   return (
@@ -37,7 +33,6 @@ export function RaiseErrors() {
       <div className="flex flex-col gap-4 sm:flex-row">
         <Button onClick={handleFrontEndError}>Front-End Error</Button>
         <Button onClick={handleBackEndError}>Back-End Error</Button>
-        <Button onClick={teste}>Teste</Button>
       </div>
     </div>
   );

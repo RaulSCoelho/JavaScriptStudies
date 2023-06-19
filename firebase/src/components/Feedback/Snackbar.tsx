@@ -1,12 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { FaCheckCircle, FaExclamationTriangle, FaExclamationCircle, FaInfoCircle, FaTimes } from "react-icons/fa";
+import { FaCheckCircle, FaInfoCircle, FaTimes, FaBan, FaExclamation } from "react-icons/fa";
 
 interface Props {
   open: boolean;
   message: string;
-  type: "success" | "warning" | "alert" | "info";
+  type: "success" | "error" | "alert" | "info";
   onClose: () => void;
   duration?: number;
 }
@@ -40,10 +40,10 @@ export function Snackbar({ open, message, type, onClose, duration = 6000 }: Prop
     switch (type) {
       case "success":
         return <FaCheckCircle className="text-green-500" />;
-      case "warning":
-        return <FaExclamationTriangle className="text-yellow-500" />;
+      case "error":
+        return <FaBan className="text-red-500" />;
       case "alert":
-        return <FaExclamationCircle className="text-red-500" />;
+        return <FaExclamation className="text-yellow-500" />;
       case "info":
         return <FaInfoCircle className="text-blue-500" />;
       default:
@@ -55,10 +55,10 @@ export function Snackbar({ open, message, type, onClose, duration = 6000 }: Prop
     switch (type) {
       case "success":
         return "bg-green-100 text-green-800";
-      case "warning":
-        return "bg-yellow-100 text-yellow-800";
-      case "alert":
+      case "error":
         return "bg-red-100 text-red-800";
+      case "alert":
+        return "bg-yellow-100 text-yellow-800";
       case "info":
         return "bg-blue-100 text-blue-800";
       default:
