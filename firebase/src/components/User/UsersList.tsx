@@ -47,7 +47,7 @@ export function UsersList({ users }: Props) {
   return (
     <div>
       {isLoading && <Loading />}
-      <h2 className="mb-4 text-2xl font-bold">User List</h2>
+      <h2 className="mb-4 text-2xl font-bold">Users List</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Input label="name" register={register("name")} error={errors.name?.message} />
