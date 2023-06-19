@@ -3,7 +3,7 @@ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export function Header() {
   return (
-    <div className="bg-skin-fill-primary flex w-full items-center justify-between p-4">
+    <div className="flex w-full items-center justify-between bg-skin-fill-primary p-4">
       <ThemeSwitcher />
       <Logout />
     </div>
