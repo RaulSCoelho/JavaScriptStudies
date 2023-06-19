@@ -45,9 +45,10 @@ export function UsersList({ users }: Props) {
   }
 
   return (
-    <>
+    <div>
       {isLoading && <Loading />}
-      <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="mb-4 text-2xl font-bold">User List</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Input label="name" register={register("name")} error={errors.name?.message} />
           <Input label="email" register={register("email")} error={errors.email?.message} />
@@ -57,14 +58,14 @@ export function UsersList({ users }: Props) {
         </Button>
       </form>
       {userList.length > 0 && (
-        <div className="mt-4 grid grid-cols-3 gap-4">
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {userList.map(user => (
             <div
               key={user.id}
-              className="relative flex flex-col items-center rounded bg-skin-fill-secondary p-4 text-skin-base shadow"
+              className="relative flex flex-col items-center overflow-hidden rounded bg-skin-fill-secondary p-4 text-skin-base shadow"
             >
-              <span className="font-semibold">{user.name}</span>
-              <span className="font-semibold">{user.email}</span>
+              <p className="break-all font-semibold">{user.name}</p>
+              <p className="break-all font-semibold">{user.email}</p>
               <Trash
                 size={22}
                 className="absolute right-1 top-1 cursor-pointer text-red-500 hover:text-red-700"
@@ -74,6 +75,6 @@ export function UsersList({ users }: Props) {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
