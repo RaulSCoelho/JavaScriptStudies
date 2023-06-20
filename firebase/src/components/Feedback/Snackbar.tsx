@@ -8,10 +8,11 @@ interface Props {
   message: string;
   type: "success" | "error" | "alert" | "info";
   onClose: () => void;
+  position?: "left-bottom" | "right-bottom" | "mid-bottom" | "left-top" | "right-top" | "mid-top"
   duration?: number;
 }
 
-export function Snackbar({ open, message, type, onClose, duration = 6000 }: Props) {
+export function Snackbar({ open, message, type, onClose, position = "left-bottom", duration = 6000 }: Props) {
   const [isVisible, setIsVisible] = useState(open);
   const snackRef = useRef<HTMLDivElement>(null);
 
@@ -23,10 +24,22 @@ export function Snackbar({ open, message, type, onClose, duration = 6000 }: Prop
   useEffect(() => {
     const snack = snackRef.current;
     if (snack) {
-      snack.classList.toggle("-left-full", !isVisible);
-      snack.classList.toggle("left-4", isVisible);
+      const positionClasses = {
+        "left-bottom": [["-left-full"], ["left-4"], ["bottom-4"]],
+        "right-bottom": [["-right-full"], ["right-4"], ["bottom-4"]],
+        "mid-bottom": [["-bottom-full"], ["bottom-4"], ["left-1/2", "transform", "-translate-x-1/2"]],
+        "left-top": [["-left-full"], ["left-4"], ["top-4"]],
+        "right-top": [["-right-full"], ["right-4"], ["top-4"]],
+        "mid-top": [["-top-full"], ["top-4"], ["left-1/2", "transform", "-translate-x-1/2"]],
+      };
+
+      const [whenNotVisible, whenVisible, always] = positionClasses[position]
+
+      whenNotVisible.forEach(cls => snack.classList.toggle(cls, !isVisible))
+      whenVisible.forEach(cls => snack.classList.toggle(cls, isVisible))
+      always.forEach(cls => snack.classList.toggle(cls, true))
     }
-  }, [isVisible]);
+  }, [isVisible, position]);
 
   useEffect(() => {
     if (open) {
@@ -69,7 +82,7 @@ export function Snackbar({ open, message, type, onClose, duration = 6000 }: Prop
   return (
     <div
       ref={snackRef}
-      className={`fixed bottom-4 rounded-md p-4 shadow-md transition-[left] duration-500 ease-in-out ${getSnackbarColor()}`}
+      className={`fixed rounded-md p-4 shadow-md transition-[inset] duration-500 ease-in-out ${getSnackbarColor()}`}
     >
       <div className="flex items-center gap-3">
         <Icon />
