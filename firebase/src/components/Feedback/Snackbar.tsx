@@ -12,9 +12,11 @@ interface Props {
   duration?: number;
 }
 
-export function Snackbar({ open, message, type, onClose, position = "left-bottom", duration = 6000 }: Props) {
+export function Snackbar({ open, message, type, onClose, position = "left-bottom", duration = 6 }: Props) {
   const [isVisible, setIsVisible] = useState(open);
   const snackRef = useRef<HTMLDivElement>(null);
+
+  duration *= 1000
 
   const handleClose = useCallback(() => {
     setIsVisible(false);
